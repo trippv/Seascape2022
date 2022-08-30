@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "1.Busqueda_bibliografica.html",
+    "href": "1.Busqueda_bibliografica.html",
+    "title": "Busqueda bibliográfica",
+    "section": "",
+    "text": "En este documento se describe el proces para obtener la matriz final bibliográfica."
+  },
+  {
+    "objectID": "1.Busqueda_bibliografica.html#busqueda-en-los-motores-de-scopus-e-isi-web-of-science",
+    "href": "1.Busqueda_bibliografica.html#busqueda-en-los-motores-de-scopus-e-isi-web-of-science",
+    "title": "Busqueda bibliográfica",
+    "section": "1 Busqueda en los motores de Scopus e ISI Web of Science",
+    "text": "1 Busqueda en los motores de Scopus e ISI Web of Science\n\n1.1 Busqueda del 15/03/2022\nLa busqueda de bibliografia se enfoco a los motores Scopus e ISI Web of Science. La primera busqueda se realizó el 15 de marzo del 2022 usando las siguientes palabras clave\n\nPara SCOPUS:\n\n(seascape AND genomics) (title) OR (marine AND genomics) ABS (year) >2009\nEsta busqueda dio 667 hits\n\nPara ISI:\n\nseacape genomics (title) OR (marine AND genomics) (Abstract) from year >2009\nEsta busqueda arrojo 603 hits\n\n\n1.2 Busqueda del 17/03/2022\nPara incluir estudios que no se pueden considerar como seascape pero que detectaron evidencias de adaptación local o divergencia genética en el ambiente marino, se amplio la busqueda utilizando los siguientes parámetros:\n\nPara SCOPUS\n\n\n\n\n\n\n\n\n\ntitle\nseascape genomics\n\n\n\nOR Author keywords\npopulation genomics OR local adaptation OR rad-seq\n\n\n\nAND All fields\nmarine\n\n\n\nNOT All fields\nmicrobiome OR bacteria\n\n\n\nPublication Date\n2010 - 2022\n\n\n\n\nQue arrojó 616 documentos\n\nPara ISI\n\n\n\n\n\n\n\n\n\ntitle\nseascape genomics\n\n\n\nOR Author keywords\npopulation genomics OR local adaptation OR rad-seq\n\n\n\nAND All fields\nmarine\n\n\n\nNOT All fields\nmicrobiome OR bacteria\n\n\n\nPublication Date\n2010 - 2022\n\n\n\n\nEsto resultó en 520 documentos\n\n\n\n\n\n\nNota\n\n\n\nEvidentemente, hay hits repetidos entre las búsquedas realizadas en ambas fechas. En pasos posteriores se eliminan los duplicados\n\n\n\n\n1.3 Estudios adicionales\nAdemás de las busquedas en Scopus e Isi, se incorporaron estudios adicionales los cuales se utilizaron para construir la propuesta del presente estudio. Estos son:\n\n\n\n\n\n\n\n\n\n\n\n\n\nTitle\nDOI\nAuthors\nYear\nKeywords\ndatabase\n\n\n\n\nParallel adaptive evolution of Atlantic cod on both sides of the Atlantic Ocean in response to temperature\n10.1098/rspb.2010.0985\nBradbury, Ian R.\n2010\natlantic ocean; atlantic cod; local adaptation; natural selection; single nucleotide polymorphysm; temperature\nOther\n\n\nIdentifying patterns of dispersal, connectivity and selection in the sea scallop, Placopecten magellanicus, using RADseq-derived SNPs\n10.1111/eva.12432\nVan Wyngaarden, Mallory\n2017\nradseq; connectivity; dispersal; outlier loci; population genomics; population structure; sea scallop; single nucleotide polymorphysm\nOther\n\n\nRAD sequencing reveals genomewide divergence between independent invasions of the European green crab ( Carcinus maenas ) in the Northwest Atlantic\n10.1002/ece3.2872\nJeffery, Nicholas W.\n2017\ncoi; carcinus maenas; european green crab; population structure; restriction-site-associated dna sequencing\nOther\n\n\nA climate-associated multispecies cryptic cline in the northwest Atlantic.\n10.1126/sciadv.aaq0929\nStanley, Ryan R. E.\n2018\nclimate change; atlantic ocean; temperatura; climatic gradient; spatial genetic structure; genetic structure\nOther\n\n\nParallel adaptive evolution of geographically distant herring populations on both sides of the North Atlantic Ocean\n10.1073/pnas.1617728114\nLamichhaney, Sangeet\n2017\natlantic herring; genetic adaptation; parallel evolution; reproductive strategies; whole-genome sequencing\nOther\n\n\nSeascape genomics reveals adaptive divergence in a connected and commercially important mollusc, the greenlip abalone ( Haliotis laevigata ), along a longitudinal environmental gradient\n10.1111/mec.14526\nSandoval‐Castillo, Jonathan\n2018\nclimate change; ddrad-seq; ecological genomics; landscape genomics; marine protected areas (mpas); population connectivity; southern australia\nOther\n\n\nPopulation genomics reveals a mismatch between management and biological units in green abalone ( Haliotis fulgens )\n10.7717/peerj.9722\nMejía-Ruíz, Paulina\n2020\nabalone; ddrad-seq; fisheries management; green abalone; haliotis fulgens; population genomics; snps\nOther\n\n\nNeutral and adaptive population structure of pink abalone ( Haliotis corrugata ): fishery management implications\n10.1093/icesjms/fsab098\nAlberto Mares-Mayagoitia, Jorge\n2021\nddrad; haliotis corrugata; pink abalone; population genomics\nOther\n\n\nPopulation genomic evidence for adaptive differentiation in Baltic Sea three-spined sticklebacks\n10.1186/s12915-015-0130-8\nGuo, Baocheng\n2015\nbaltic sea; gasterosteus acucelatus; rad-sequencing; snps; local adaptation; population differentiation\nOther"
+  },
+  {
+    "objectID": "1.Busqueda_bibliografica.html#procesamiento-de-las-bases-de-datos",
+    "href": "1.Busqueda_bibliografica.html#procesamiento-de-las-bases-de-datos",
+    "title": "Busqueda bibliográfica",
+    "section": "2 Procesamiento de las bases de datos",
+    "text": "2 Procesamiento de las bases de datos\n\n2.1 Caracterización general de cada base de datos\n\n\n\n\n\n\nConsiderando ambas búsquedas bibliográficas se obtuvieron:\n\n1079 resultados en ISI Web\n1252 resultados en Scopus\n9 otros\n\n\n\n\n\n\n\n\n\n\n\n2.2 Pre-filtrado de los registros\nSe filtraron aquellos registros de tipo Article y se eliminaron aquellos relacionados con Bacteria o microbiome\n\n\n\n\n\n\n\n\nTras filtrar estos registro se obtuvieron:\n\n700 resultados en ISI Web\n736 resultados en Scopus\n9 otros\n\n\n\n\nEn total se eliminaron 895 documentos que no son articulos o que estan relacionados con microbioma o bacteria\n\nVenn plot of documents\n\n\n\n\n\n\n\nQuitar duplicados entre todas las bases de datos\n\n\n\n\n\n\n\n\n\n\nCaracterización de las palabras clave en la base de datos\n\n\n\n\n\n\n\n\nTras quitar los duplicados entre las tres bases de datos, quedan 1091 documentos los cuales pasaran a la siguiente etapa de revisión.\nEsta segunda etapa consiste en la revisión manual de los abstracts, asi como las palabras clave y el titulo para identificar.\n\n\n\n2.3 Resultados de la primera ronda de selección\nEn esta ronda se excluyeron los artículos que tuvieran las caracteristicas:\n\nEspecies no marinas (lagos, ríos, etc.)\nEstudios predominantemente teóricos o de revisión\nEstudios predominantemente experimentales (transplante, laboratorio, etc.)\nEstudios enfocados a toxicología o efectos de degradación del hábitat (metales pesados, contaminantes, etc.)\nEstudios que utilizaron unicamente marcadores mitocondriales\nEstudios enfocados predominantemente al ensamblado de genomas o transcriptomas\n\n\n\n\nTras esta primera ronda de selección, quedaron 118\n\n\n2.4 caracterización de las palabras clave de la primera ronda de selección"
+  },
+  {
+    "objectID": "1.Busqueda_bibliografica.html#segunda-ronda-de-selección",
+    "href": "1.Busqueda_bibliografica.html#segunda-ronda-de-selección",
+    "title": "Busqueda bibliográfica",
+    "section": "3 Segunda ronda de selección",
+    "text": "3 Segunda ronda de selección\nPara esta ronda, se revisó manualmente los articulos en completo y se seleccionó a aquellos articulos relevantes para el análisis\nTras esta ronda, se seleccionaron XXX"
+  },
+  {
+    "objectID": "1.Busqueda_bibliografica.html#diagrama-de-trabajo",
+    "href": "1.Busqueda_bibliografica.html#diagrama-de-trabajo",
+    "title": "Busqueda bibliográfica",
+    "section": "4 Diagrama de trabajo:",
+    "text": "4 Diagrama de trabajo:"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Fronteras de la Ciencia 2022",
+    "section": "",
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nAcerca del proyecto\nDescripción de la busqueda bibliográfica"
+  }
+]

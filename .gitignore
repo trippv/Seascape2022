@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+PGDSpider_2.1.1.5
+Plink
+databases/environment
+databases/genomic_repositories
+scripts
+/.quarto/

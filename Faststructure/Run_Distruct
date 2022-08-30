@@ -1,0 +1,40 @@
+#!/bin/bash
+
+## parameters:
+## arg1: Inputfile
+## arg2: outputfile
+## arg3: maximum K value
+
+
+
+
+######
+#to run: bash -i test_str_it.sh
+
+export DISPLAY=:0
+
+
+# activate conda environmet
+
+conda activate py27
+i=1
+
+while [ $i -ne $2 ]
+do
+        i=$(($i+1))
+		
+		
+        echo "Testin K = $i"
+		
+# Run distruct		
+python ~/faststructure/fastStructure-master/distruct.py \
+--input=$1 \
+--output=$1_distruct_K$i.png \
+-K $i \
+--popfile $3 \
+
+
+		
+done
+
+conda deactivate

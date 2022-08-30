@@ -1,0 +1,45 @@
+#!/bin/bash
+
+## parameters:
+## arg1: Inputfile
+## arg2: outputfile
+## arg3: maximum K value
+
+
+
+
+######
+#to run: bash -i test_str_it.sh
+
+export DISPLAY=:0
+
+
+# activate conda environmet
+
+conda activate py27
+i=1
+
+while [ $i -ne $3 ]
+do
+        i=$(($i+1))
+		
+		
+        echo "Testin K = $i"
+		
+# Run structure		
+python ~/faststructure/fastStructure-master/structure.py \
+--input=$1 \
+--output=$2 \
+-K $i \
+--format=bed \
+--full \
+--cv=10 \
+--prior=simple	
+
+
+# choose K
+python ~/faststructure/fastStructure-master/chooseK.py --input=$2 > Model_complexity.txt
+		
+done
+
+conda deactivate

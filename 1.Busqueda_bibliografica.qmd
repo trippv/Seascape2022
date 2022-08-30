@@ -1,0 +1,515 @@
+---
+title: "Busqueda bibliográfica"
+author: "Tripp-Valdez, M"
+format: 
+  html:
+    code-fold: show
+    toc: true
+    toc-location: left
+    number-sections: true
+    number-depth: 3
+    fontsize: 1em
+editor: visual
+---
+
+```{r setup, include=FALSE}
+#markdown parametersd
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+
+########################################################################
+########### Functions for the procesis of databases ####################
+#######################################################################
+
+# Libraries
+library(here)
+library(tidyverse)
+library("ggVennDiagram")
+
+# functions for tidying tables
+
+## Tidy ISI
+tidy_isi <- function(x) {
+  
+  isi_df <-  x %>% 
+    
+  #chane name while selecting
+  select("Title" = `Article Title`,
+         "DOI" = DOI,
+         Authors,
+         Abstract,
+         "Year" = `Publication Year`,
+         "Keywords" = `Author Keywords`,
+         "Type" = `Document Type`) %>% 
+    
+  #add database name
+  mutate(database = "ISI") %>% 
+  
+  # Change all keywords to lower case
+  mutate(Keywords = tolower(Keywords))
+  
+  isi_df
+  
+}
+
+
+## tidy scopus
+
+tidy_scopus <- function(x) {
+  
+ scopus_db <- x %>% 
+   
+  # rename while selecting
+  select(Title, DOI, Authors, Abstract, Year, 
+         "Keywords" = `Author Keywords`,
+         "Type" = `Document Type`) %>% 
+  mutate(database = "SCOPUS") %>% 
+   
+  # Change all keywords to lower case
+  mutate(Keywords = tolower(Keywords))
+ 
+ scopus_db
+ 
+}
+
+# Venn Diagrama
+## Function to extract the DOI from each database and plot a VennDiagramm
+vennplot <- function(database, column = "DOI") {
+  
+# number of databases 
+
+  DB <- unique(database$database)
+  
+# make and empty list   to fill with the DOIs
+  
+  x <- list()
+
+# start loop to fill the list with each of the databases
+  for (i in 1:length(DB)){
+    
+    x[[i]] <- database$DOI[database$database == DB[i]]
+  }
+
+# put names on the list
+names(x) <- DB
+
+
+# plot Venn Diagram with ggVenn
+
+ggVennDiagram(x, label_alpha = 0,label = "count", set_size = 6,
+                            category.names = names(x),label_size = 10) +
+  scale_fill_gradient(low="grey99",high = "grey95")+
+  #scale_color_manual(values = c("salmon", "lightblue", "grey56"))+
+    theme(legend.position = "none")
+
+
+}
+
+## Function to plot document type for each database
+
+
+plot_type <- function(x) {
+  
+x %>% 
+  group_by(database) %>% 
+  dplyr::count(Type = fct_lump(Type, n = 4, other_level = "Others")) %>% 
+  arrange(desc(Type)) %>% 
+  mutate(database = factor(database, level = c("ISI",
+                                               "SCOPUS",
+                                               "Other"))) %>% 
+  ungroup() %>% 
+  group_by(database) %>% 
+  mutate(label_y = cumsum(n)) %>% 
+ggplot(., aes(x = database, y = n, fill = Type))+
+  geom_bar(stat = "identity") +
+    coord_flip()+
+  labs(title = "Document type by database", 
+       y = "number of documents")+
+  theme_classic()+
+  theme(legend.position = "right")
+}
+
+#Funcion para identificar elementos diferentes entre bases
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+```
+
+En este documento se describe el proces para obtener la matriz final bibliográfica.
+
+## Busqueda en los motores de Scopus e ISI Web of Science
+
+### Busqueda del 15/03/2022
+
+La busqueda de bibliografia se enfoco a los motores **Scopus** e **ISI Web of Science**. La primera busqueda se realizó el 15 de marzo del 2022 usando las siguientes palabras clave
+
+-   Para SCOPUS:
+
+*(seascape AND genomics)* (title) OR *(marine AND genomics)* ABS (year) *\>2009*
+
+Esta busqueda dio 667 hits
+
+-   Para ISI:
+
+*seacape genomics* (title) OR *(marine AND genomics)* (Abstract) from year *\>2009*
+
+Esta busqueda arrojo 603 hits
+
+### Busqueda del 17/03/2022
+
+Para incluir estudios que no se pueden considerar como *seascape* pero que detectaron evidencias de adaptación local o divergencia genética en el ambiente marino, se amplio la busqueda utilizando los siguientes parámetros:
+
+-   Para SCOPUS
+
+|                      |                                                    |     |
+|---------------------------|---------------------------|------------------|
+| *title*              | seascape genomics                                  |     |
+| OR *Author keywords* | population genomics OR local adaptation OR rad-seq |     |
+| AND *All fields*     | marine                                             |     |
+| NOT *All fields*     | microbiome OR bacteria                             |     |
+| *Publication Date*   | 2010 - 2022                                        |     |
+
+Que arrojó 616 documentos
+
+-   Para ISI
+
+|                      |                                                    |     |
+|---------------------------|---------------------------|------------------|
+| *title*              | seascape genomics                                  |     |
+| OR *Author keywords* | population genomics OR local adaptation OR rad-seq |     |
+| AND *All fields*     | marine                                             |     |
+| NOT *All fields*     | microbiome OR bacteria                             |     |
+| *Publication Date*   | 2010 - 2022                                        |     |
+
+Esto resultó en 520 documentos
+
+::: callout-note
+## Nota
+
+Evidentemente, hay hits repetidos entre las búsquedas realizadas en ambas fechas. En pasos posteriores se eliminan los duplicados
+:::
+
+### Estudios adicionales
+
+Además de las busquedas en Scopus e Isi, se incorporaron estudios adicionales los cuales se utilizaron para construir la propuesta del presente estudio. Estos son:
+
+```{r Otherpapers}
+#| column: page
+
+
+other_db <- read_csv(here::here("databases/bibliographic/other/Items_from_project.csv")) %>% 
+  
+  # add database name
+  mutate(database = "Other") %>% 
+  
+  #select columns
+  select(Title, DOI, Authors, Abstract, 
+         "Year" = year, Keywords, Type, database) %>% 
+  
+  # change all keywords to lowercase
+  mutate(Keywords = tolower(Keywords))
+
+
+# diplay table in the report
+knitr::kable(other_db %>% 
+               select(-Abstract, -Type))
+
+```
+
+## Procesamiento de las bases de datos
+
+### Caracterización general de cada base de datos
+
+```{r database_ISI}
+
+##########################################
+###### ISI databases #####################
+
+
+# Load both ISI searches
+ISI_one <- readxl::read_xls(here("databases/bibliographic/15032022_search/ISIweb_15032022_seascapeANDgenomics_OR_marineANDgenomics_2010-current.xls"))
+
+ISI_two <- readxl::read_xls(here("databases/bibliographic/17032022_search/ISIweb_01042022_SecondSearch.xls"))
+
+# Bind both tables and remove duplicates
+ISI_DB <- rbind(ISI_one, ISI_two) %>% 
+  as_tibble(.) %>% 
+  distinct(DOI, .keep_all = TRUE)
+
+# remove both isi origianl tables
+rm(ISI_one, ISI_two)
+
+# Tidy database
+ISI_DB_tdy <- tidy_isi(ISI_DB)
+
+ISI_DB_tdy_filter <- ISI_DB_tdy %>% 
+  filter(Type == "Article") %>% 
+  filter(!str_detect(Title, "microbiome|bacteria|Bacteria|Bacterial|bacterial|fungi")) %>% 
+  filter(!str_detect(Keywords,"microbiome|bacteria|Bacteria|Bacterial|bacterial|fungi"))
+
+
+
+```
+
+```{r database_scopus}
+#######################################
+##### SCOPUS searches #################
+
+scopus_one <- read_csv(here("databases/bibliographic/15032022_search/scopus_15032022_seascapeANDgenomics_OR_marineANDgenomics_2010-current.csv"))
+
+scopus_two <- read_csv(here("databases/bibliographic/17032022_search/Scopus_17032022SsecondSearch.csv"))
+
+
+# bind both databases
+
+scopus_DB <- rbind(scopus_one, scopus_two) %>% 
+  as_tibble(.) %>% 
+  distinct(DOI, .keep_all = TRUE)
+
+# remove scopus one and two
+
+rm(scopus_one, scopus_two)
+
+# Tidy scopus
+
+scopus_DB_tdy <- tidy_scopus(scopus_DB)
+
+scopus_DB_tdy_filter <- scopus_DB_tdy %>%
+  filter(Type == "Article") %>% 
+  filter(!str_detect(Title, "microbiome|bacteria|Bacteria|Bacterial|bacterial|fungi")) %>% 
+  filter(!str_detect(Keywords,"microbiome|bacteria|Bacteria|Bacterial|bacterial|fungi"))
+
+```
+
+Considerando ambas búsquedas bibliográficas se obtuvieron:
+
+-   `r nrow(ISI_DB_tdy)` resultados en ISI Web
+-   `r nrow(scopus_DB_tdy)` resultados en Scopus
+-   `r nrow(other_db)` otros
+
+```{r bindAllDatabases}
+#bind all databases
+
+all_db <- rbind(ISI_DB_tdy, scopus_DB_tdy, other_db)
+```
+
+```{r}
+plot_type(all_db)
+```
+
+### Pre-filtrado de los registros
+
+Se filtraron aquellos registros de tipo *Article* y se eliminaron aquellos relacionados con *Bacteria* o *microbiome*
+
+```{r bindAllDatabases_filtered}
+#bind all databases
+
+all_db_filter <- rbind(ISI_DB_tdy_filter, scopus_DB_tdy_filter, other_db)
+```
+
+```{r}
+plot_type(all_db_filter)
+```
+
+Tras filtrar estos registro se obtuvieron:
+
+-   `r nrow(ISI_DB_tdy_filter)` resultados en ISI Web
+-   `r nrow(scopus_DB_tdy_filter)` resultados en Scopus
+-   `r nrow(other_db)` otros
+
+```{r FirstFilter_documentTYpe}
+
+# Select only Article type and remove all microbiome
+
+all_db_first <- all_db_filter %>% 
+  filter(Type == "Article") %>% 
+  filter(!str_detect(Title, "microbiome|bacteria|Bacteria|Bacterial|bacterial|fungi")) %>% 
+  filter(!str_detect(Keywords,"microbiome|bacteria|Bacteria|Bacterial|bacterial|fungi"))
+
+
+## How many were removed
+
+removed_first <- nrow(all_db) - nrow(all_db_first)
+```
+
+En total se eliminaron **`r removed_first`** documentos que no son articulos o que estan relacionados con microbioma o bacteria
+
+#### Venn plot of documents
+
+```{r VennFirst}
+vennplot(all_db_first)
+```
+
+#### Quitar duplicados entre todas las bases de datos
+
+```{r}
+all_db_first_unique <- all_db_first %>% 
+  distinct(DOI, .keep_all = TRUE)
+```
+
+```{r}
+plot_type(all_db_first_unique)
+```
+
+#### Caracterización de las palabras clave en la base de datos
+
+```{r}
+
+all_db_first_unique %>% 
+ # set all keywords to lowecase
+  mutate(Keywords = tolower(Keywords)) %>% 
+  
+  #select keywords column
+  select(Keywords) %>% 
+  
+  #separate keywords into individuals rows
+  separate_rows(Keywords, sep = "; ") %>% 
+  
+   # rename if "rad" to merge rad-seq and radseq
+  mutate(Keywords = str_replace(Keywords, pattern = "radseq", replacement = "rad-seq")) %>% 
+  
+  # same for snp and snps
+  
+  mutate(Keywords = str_replace(Keywords, pattern = "snps", replacement = "snp")) %>% 
+  
+  
+  # counts most frequent keywords
+  count(Keywords = fct_lump(Keywords, n = 25, other_level = "Others")) %>% 
+  
+  filter(Keywords != "Others") %>% 
+  mutate(Keywords = fct_reorder(Keywords, -n)) %>% 
+  
+# plot results
+
+ggplot(., aes(x = Keywords, y = n))+
+  geom_col()+
+  coord_flip()+
+  theme_bw()
+```
+
+```{r export}
+#Export table for manual search
+
+write.csv(all_db_first_unique, here::here("output/bibliographic_output/FirstSelection_17042022_bibliographic_matrix.csv"), row.names = FALSE)
+```
+
+Tras quitar los duplicados entre las tres bases de datos, quedan **`r nrow(all_db_first_unique)`** documentos los cuales pasaran a la siguiente etapa de revisión.
+
+Esta segunda etapa consiste en la revisión manual de los abstracts, asi como las palabras clave y el titulo para identificar.
+
+### Resultados de la primera ronda de selección
+
+En esta ronda se excluyeron los artículos que tuvieran las caracteristicas:
+
+1.  Especies no marinas (lagos, ríos, etc.)
+2.  Estudios predominantemente teóricos o de revisión
+3.  Estudios predominantemente experimentales (transplante, laboratorio, etc.)
+4.  Estudios enfocados a toxicología o efectos de degradación del hábitat (metales pesados, contaminantes, etc.)
+5.  Estudios que utilizaron unicamente marcadores mitocondriales
+6.  Estudios enfocados predominantemente al ensamblado de genomas o transcriptomas
+
+```{r SecondRound}
+
+# open the manually-process matriz with selected papaers
+all_DB_first_selected <- readxl::read_xls(here("output/bibliographic_output_processed/FirstSelection_170422_Selected.xls"))
+
+#redefine object to keep only the selected artiles
+
+all_DB_second_selection <- all_DB_first_selected %>% 
+  filter(Discard == "no")
+
+```
+
+Tras esta primera ronda de selección, quedaron **`r nrow(all_DB_second_selection)`**
+
+### caracterización de las palabras clave de la primera ronda de selección
+
+```{r}
+
+all_DB_second_selection %>% 
+  # set all keywords to lowecase
+  mutate(Keywords = tolower(Keywords)) %>% 
+  
+  #select keywords column
+  select(Keywords) %>% 
+  
+  #separate keywords into individuals rows
+  separate_rows(Keywords, sep = "; ") %>% 
+  
+   # rename if "rad" to merge rad-seq and radseq
+  mutate(Keywords = str_replace(Keywords, pattern = "radseq", replacement = "rad-seq")) %>% 
+  
+  # same for snp and snps
+  
+  mutate(Keywords = str_replace(Keywords, pattern = "snps", replacement = "snp")) %>% 
+  
+  
+  # counts most frequent keywords
+  count(Keywords = fct_lump(Keywords, n = 25, other_level = "Others")) %>% 
+  
+  filter(Keywords != "Others") %>% 
+  mutate(Keywords = fct_reorder(Keywords, -n)) %>% 
+  
+# plot results
+
+ggplot(., aes(x = Keywords, y = n))+
+  geom_col()+
+  coord_flip()+
+  theme_bw()
+```
+
+```{r writeSecondRound}
+# write table
+write.csv(all_DB_second_selection, 
+          here::here("output/bibliographic_output/SecondSelection_17032022.csv"), 
+          row.names = FALSE)
+```
+
+## Segunda ronda de selección
+
+Para esta ronda, se revisó manualmente los articulos en completo y se seleccionó a aquellos articulos relevantes para el análisis
+
+Tras esta ronda, se seleccionaron XXX
+
+## Diagrama de trabajo:
+
+```{r}
+DiagrammeR::grViz("digraph {
+  graph [layout = dot, rankdir = TB, fontsize = 14]
+  
+  node [shape = rectangle]        
+  rec1 [label = 'Records identified \nthrough database searching \n(Web of science [n = 700] & SCOPUS [n = 736])']
+  
+  rec2 [label = 'Additional records identified \nthrough other sources \n(reference list from project poposal [n = 9])']
+
+  rec2_1 [label = 'Remove duplicates \n[n = 1091]']  
+
+  rec3 [label =  'First screening: 
+  Keywords, abstract and document titles']
+  
+  rec4 [label = 'Records excluded:
+  - Theoretical o reviews
+  - non-marine environment
+  - Toxicological studies
+  - Genome or transcriptome assembly']
+  
+  rec5 [label = 'Full-text articles assess for eligibility
+  [n= 118]']
+  
+  rec6 [label = 'Records excluded:
+  - Used mitocondrial markers only
+  - Used AFLP o microsatellites only
+  - Used experimental data (e.g. transplant)
+  - Describes artifical environment (e.g. power plant)
+  - Performed in mammals or birds']
+  
+  rec7 [label = 'Final matrix \nn = 67']
+  
+ 
+
+  # edge definitions with the node IDs
+  rec1 -> rec2_1; rec2 -> rec2_1; rec2_1 -> rec3; rec3 -> rec5; rec5 -> rec7
+  {rank=same; rec3 -> rec4}
+  {rank=same; rec5 -> rec6}
+  }",
+  height = 500)
+```
