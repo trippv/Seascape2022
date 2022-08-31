@@ -1,0 +1,7 @@
+code	site	Zone	latitude_dms	longitude_dms	N	Nhos	sample
+QI	Quillaipe	Reloncavi Gulf	41d32m 55.35sS	72d46m 14.35sW	15	15	30
+PI	Pichicolo	Reloncavi Gulf	42d02m23.76sS	72d35m27.17sW	13	12	25
+LA	Caleta La Arena	Reloncavi Gulf	41d41m 00.00sS	72d40m 18.92sW	20	19	39
+CN	Canutillar	Reloncavi Gulf	41d31m 13.90sS	72d20m 15.69sW	17	16	33
+CB	Canal Coldita	Chiloe Island	43d14m 48.82sS	73d41m 42.77sW	16	15	31
+IP	Isla Peel	Patagonia	50d50m 29.83sS	74d00m 41.27sW	16	16	32

@@ -1,0 +1,8 @@
+region	group	site	code	Sampling Time	latitude_dec	longitude_dec	Spawning	sample	Avg Call Rate
+North Sea	North Sea	North Sea	NS	Mar 2002	55.60	05.85	Yes	42	0.983
+Kattegat	North Sea	Kattegat	KT	Feb 2004	56.90	12.15	Yes	48	0.995
+Oresund	North Sea	Oresund	OR	Feb 2003	55.95	12.70	Yes	48	0.995
+Baltic	Baltic	Bornholm 05	BO5	June 2005	55.50	16.00	Yes	8	0.989
+Baltic	Baltic	Bornholm 04	BO4	June 2004	55.59	16.30	Yes	8	0.993
+Baltic	Baltic	Gotland	GO	Nov 2008	57.15	18.78	No	20	0.994
+Baltic	Baltic	Oland	OL	Nov 2008	57.40	17.00	No	20	0.994

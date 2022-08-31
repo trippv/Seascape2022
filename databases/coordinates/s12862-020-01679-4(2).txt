@@ -1,0 +1,15 @@
+site	code	latitude_dec	longitude_dec	sample
+Porth Nolloth	PN	-29.267	16.856	40
+Hondeklipbaai	HB	-30.333	17.266	40
+Doringbaii	DB	-31.8198	18.2312	40
+Lambertsbai	LB	-32.101	18.297	40
+Jacobsbaii	JB	-31.971	17.875	40
+Sea Point	SP	-33.914	18.383	40
+Battys Bay	BT	-34.368	18.915	40
+Cape Agulhas	CA	-34.831	20.014	39
+Mossel Bay	MB	-34.196	22.155	39
+Knysna	KY	-34.0852	23.073	40
+Cape St. Francis	CF	-34.202	24.842	40
+Port Alfred	PA	-33.604	26.907	40
+Haga Haga	HH	-32.764	28.252	40
+Coffee Bay	CB	-31.98828	29.14959	40

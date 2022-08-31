@@ -1,0 +1,8 @@
+site	code	latitude_dec	longitude_dec	sample	Fst	Fst_signif	direction	reference
+Bannow Bay	BAN	52.201	-6.7847	22	0.001	signif	east-west	FLX
+Gann	GAN	51.971	-5.247	17	0.019	signif	east-west	FLX
+Dee	DEE	53.424	-3.237	22	0.029	signif	east-west	FLX
+Dyfi	DYF	52.521	-4.107	11	0.025	signif	east-west	FLX
+Flaxfort Strand	FLX	52.186	-6.786	13	0	no	east-west	FLX
+Red wharf	RWB	53.306	-4.205	18	0.018	signif	east-west	FLX
+Burry Inlet	BUR	51.669	-4.254	30	0.022	signif	east-west	FLX

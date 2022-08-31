@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Seascape2022 – baypass_upstream</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Seascape2022</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">About</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#baypass_upstream" id="toc-baypass_upstream" class="nav-link active" data-scroll-target="#baypass_upstream">BayPass_upstream</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="baypass_upstream" class="level1">
+<h1>BayPass_upstream</h1>
+<p>Code for BayPass analyses run on an HPC cluster (Amarel at Rutgers) before transferring output files to local computer for downstream analyses and visualization in R.</p>
+<p>Downloaded BAYPASS v.2.1 to Amarel and unzipped/installed in <code>~/Programs</code>.</p>
+<p><em>Note: Process below is for running BAYPASS with the full mac2 dataset (wN4). For the dataset w/out N4, inputs and file names were changed as needed.</em></p>
+<p>Created BAYPASS input file with PGDSpider v.2.1.1.5 &amp; modifications on local computer.</p>
+<ul>
+<li>Took <code>output.hicov2.snps.only.mac2.vcf</code> file and converted to <code>clownfish_mac2.snps</code>.</li>
+</ul>
+<p>Used following code to run PGDSpider v.2.1.1.5 on Amarel:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#grabbed an interactive node with following line of code</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--partition</span><span class="op">=</span>main <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--cpus-per-task</span><span class="op">=</span>1 <span class="at">--mem</span><span class="op">=</span>2000 <span class="at">--time</span><span class="op">=</span>00:30:00 <span class="at">--export</span><span class="op">=</span>ALL <span class="at">--pty</span> bash <span class="at">-i</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#called #PGDSpider in ~/Programs/PGDSpider_2.1.1.5</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> <span class="at">-Xmx1024m</span> <span class="at">-Xms512m</span> <span class="at">-jar</span> PGDSpider2-cli.jar <span class="at">-inputfile</span> output.hicov2.snps.only.mac2.vcf <span class="at">-inputformat</span> VCF <span class="at">-outputfile</span> clownfish_mac2.snps <span class="at">-outputformat</span> BAYENV <span class="at">-spid</span> VCF_BAYENV.spid</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#NOTE: if don't have spid file made, or know proper format, running the previous line of code without the -spid argument will generate a template spid file to modify as needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Spid format for PGDSpider:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># VCF Parser questions</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">PARSER_FORMAT</span><span class="op">=</span>VCF</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Only output SNPs with a phred-scaled quality of at least:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_QUAL_QUESTION</span><span class="op">=</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Select population definition file:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_POP_FILE_QUESTION</span><span class="op">=</span> <span class="ex">Pop_assignments.txt</span> <span class="co">#txt file with indv names in one column and pop assignment (Pop_1, etc.) in next (no headers, tab-delimited)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># What is the ploidy of the data?</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_PLOIDY_QUESTION</span><span class="op">=</span>  <span class="ex">DIPLOID</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Do you want to include a file with population definitions?</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_POP_QUESTION</span><span class="op">=</span> <span class="ex">TRUE</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Output genotypes as missing if the phred-scale genotype quality is below:</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_GTQUAL_QUESTION</span><span class="op">=</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Do you want to include non-polymorphic SNPs?</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_MONOMORPHIC_QUESTION</span><span class="op">=</span> <span class="ex">TRUE</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Only output following individuals (ind1, ind2, ind4, ...):</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_IND_QUESTION</span><span class="op">=</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Only input following regions (refSeqName:start:end, multiple regions: whitespace separated):</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_REGION_QUESTION</span><span class="op">=</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Output genotypes as missing if the read depth of a position for the sample is below:</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_READ_QUESTION</span><span class="op">=</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Take most likely genotype if "PL" or "GL" is given in the genotype field?</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_PL_QUESTION</span><span class="op">=</span> <span class="ex">FALSE</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Do you want to exclude loci with only missing data?</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="va">VCF_PARSER_EXC_MISSING_LOCI_QUESTION</span><span class="op">=</span> <span class="ex">FALSE</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># BAYENV Writer questions</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="va">WRITER_FORMAT</span><span class="op">=</span>BAYENV</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Save sample file</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="va">BAYENV_WRITER_SAMPLE_FILE_QUESTION</span><span class="op">=</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign half missing genotypes (one allele missing) as complete missing?</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="va">BAYENV_WRITER_HALF_MISSING_QUESTION</span><span class="op">=</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Do you want to save two additional files with used sample and loci names?</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="va">BAYENV_WRITER_WRITE_INFO_FILE_QUESTION</span><span class="op">=</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Do you want to save an additional sample file with sample sizes?</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="va">BAYENV_WRITER_WRITE_SAMPLE_FILE_QUESTION</span><span class="op">=</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Save sample/loci names file</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="va">BAYENV_WRITER_INFO_FILE_QUESTION</span><span class="op">=</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Currently, there is no option to convert a VCF file (or any other file format) to the input file format BAYPASS needs. Best option is to create input file for BayEnv (similar program to BAYPASS) and then convert to BAYPASS using either regex or on local computer.</p>
+<ul>
+<li>To convert to BAYPASS input, need to turn 3 columns (each pop has 1 column) into 6 columns (each pop has 2 columns). BayEnv input file has every allele as one row (e.g., the first row is the count for the first allele at the first SNP in all three pops, the second row is the cound for the second allele at the first SNP, etc.). The BayPass input file has every SNP as one row (e.g., the first row is the count for the first and second allele at the first SNP in all three pops - thus the 2 columns for each pop).</li>
+</ul>
+<p>Transformed BayEnv input file to BAYPASS input file titled <code>clownfish_mac2.geno</code>.</p>
+<p>Next, standardized env variables of interest (SST mean, SST min, SST max, lat, SSS mean). All env variables (except for latitude) were pulled from the MARSPEC GIS database for each sampling location.</p>
+<p>To standardize, ran following code in R:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#example for SSS mean</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create vector with raw data</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>SSS_mean_raw <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">34.38</span>, <span class="fl">34.09</span>, <span class="fl">33.66</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>SSS_mean_st <span class="ot">&lt;-</span> <span class="fu">scale</span>(SSS_mean_raw)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#done for each env of interest</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#NOTE: SST min &amp; SST max were put in one vector and standardized together because they use same original scale (degrees celsius)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once standardized, values put into a separate <code>*.env</code> text file for each env variable (3 columns, 1 row - each pop in own column in same order as in <code>*.geno</code> file).</p>
+<ul>
+<li>Ex: <code>clownfish_data_ssmean.env</code></li>
+</ul>
+<p>Created <code>BayPass.sbatch</code> file to run BAYPASS:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=p_mlp195 #p_mlp195 for pinsky lab partition, otherwise use main (or EOAS or E&amp;E)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=baypass</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8000</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=2:00:00</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --requeue</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --export=ALL</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=slurm.%j.out</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=slurm.%j.err</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=</span><span class="re">END</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-user=rene.clark@rutgers.edu</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#script for running BayPass on Amarel</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Aclarkii_Transcriptome/BayPass</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#uncomment if need to run core model to create covariance matrix and standardize env variables</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="ex">g_baypass</span> <span class="at">-npop</span> 3 <span class="at">-gfile</span> clownfish_mac2.geno <span class="at">-outprefix</span> mac2core1</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#uncomment if need to run auxiliary model (make sure env variables are standardized!)</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="ex">g_baypass</span> <span class="at">-npop</span> 3 <span class="at">-gfile</span> clownfish_mac2.geno <span class="at">-efile</span> clownfish_data_sssmean.env <span class="at">-auxmodel</span> <span class="at">-omegafile</span> clownfish_mat.cov <span class="at">-outprefix</span> mac2aux1_ssmean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ran with default settings: burn-in of 5,000 iterations followed by an additional 25,000 MCMC steps with thinning every 25 iterations (for more info/options, call <code>g_baypass -help</code>).</p>
+<p>First, ran just core model to (1) create covariance matrix for the standard covariate model (aux model) and (2) generate XtX statistics. BAYPASS generates many output files, but the useful ones here are:</p>
+<ol type="1">
+<li><code>mac2core1_mat_omega.out</code>: This is the covariance matrix needed to run aux model (file ending needs to be changed to <code>*.cov</code>.)</li>
+<li><code>mac2core1_summary_pi_xtx.out</code>: This has the XtX variables for each SNP.</li>
+</ol>
+<p>Then, ran the axuiliary model to generate Bayes Factors for each env variable/SNP combination. Ran model for each env variable separately, to avoid issues with correlation. Again, got a lot of output files, but the <code>*_summary_betai.out</code> files contain the Bayes Factors.</p>
+<ul>
+<li>Ran 2X for each env variable to make sure model converged (got same Bayes Factors each time).</li>
+</ul>
+<p>Copied <code>*_summary_betai.out</code> files to local computer and read into R for downstream analyses (<code>Scripts/Pull_BFs.R</code>).</p>
+<p><strong>To create XtX threshold value</strong></p>
+<p>After the original core model was run (with raw data), copied <code>clownfish_mac2_mat.cov</code>, <code>mac2core1_summary_beta_params.out</code>, and <code>clownfish_mac2.geno</code> to local computer and read into R (<code>Scripts/XtX_Calibration.R</code>) to generate pseudo-observed data sets (PODS) under a null model of no selection.</p>
+<ul>
+<li>Used functions from <code>baypass_utils.R</code> script that comes with BAYPASS download/installation (found in <code>baypass_2.1/utils</code>).</li>
+</ul>
+<p>Took <code>*.geno</code> file that was generated using the <code>simulate.baypass()</code> function and re-ran core model in BAYPASS with that as input. Then, copied the <code>*_summary_pi_xtx.out</code> file created from that BAYPASS run, and copied it to local computer. Read into R, and used the XtX values in the file to generate an empirical distribution of XtX under no selection. Used the 99% quantile of this distribution as the selection/neutrality threshold. SNPs with XtX values above this cut-off (from raw data) are considered adaptively differentiated.</p>
+<ul>
+<li>Code for this in <code>Scripts/XtX_Calibration.R</code>.</li>
+</ul>
+<p><strong>To assess SNP-environment associations</strong></p>
+<p>To determine if we had more significant SNP-environmental associations than expected by chance, we created ten permuted datasets to represent the null hypothesis of no associatio nbetween allele frequencies and environmental conditions. These datasets by randomly reassigning individuals to one of the three sampling locations (<code>Scripts/Write Simulation Pop Data for BayPass.R</code> –&gt; creates BayEnv-formatted file which needs to be changed to BAYPASS input format).</p>
+<p>Once input files were created, ran the permuted datasets through BAYPASS in the same manner as the raw data (first ran core model to create covariance matrix, then ran auxiliary model separately for each env variable).</p>
+<p>Copied the <code>*_summary_betai.out</code> files to local computer, and calculated the mean Bayes Factor for each unique SSNP-environmental covariable combination across all ten permuted datasets to create a null distribution of BFs to compare wit the resutls from the raw data. These values were combined with the Bayes Factors from the raw data in <code>Data/M-W_test_BF_data.csv</code>, which was read into <code>Scripts/ECDFS for Sim v Real BFs.R</code> to compare the two distributions.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

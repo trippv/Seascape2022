@@ -1,0 +1,14 @@
+site	code	latitude_dec	longitude_dec	region	sample
+Caraquet	CRQ	47.7933	-64.9938	NB	40
+Miscou	MIS	47.9017	-64.5666	NB	39
+Saint-Simon	SSI	47.7599	-64.7544	NB	30
+Inkerman	INK	47.6781	-64.8270	NB	38
+Tabusintac	TAB	47.3342	-64.9965	NB	40
+Miramichi	MIR	47.0963	-65.1467	NB	37
+Richibucto	RIC	46.6611	-64.8646	NB	39
+Bouctouche	BOU	46.4834	-64.6849	NB	40
+Cocagne	COC	46.3489	-64.6231	NB	38
+Shediac	SHD	46.2517	-64.5565	NB	39
+Shemogue	SHM	46.1661	-64.1450	NB	38
+Caribou	CRB	45.7332	-62.7449	NS	33
+Malpeque	MAL	46.4742	-63.9447	PEI	35

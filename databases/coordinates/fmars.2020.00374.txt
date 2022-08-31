@@ -1,0 +1,21 @@
+site	latitude_dec	longitude_dec	code	region
+liaodong Bay	40.26	121.16	LDW	Bohai Sea
+Qinhuangdao	39.51	119.96	QHD	Bohai Sea
+Bohai Bay	38.68	119.45	BHW	Bohai Sea
+Laizhou Bay	38	120.18	LZW	Bohai Sea
+Dalian	38.77	121.52	DL	Bohai Sea
+Rushan	36.47	122.02	RS	Bohai Sea
+Haizhou Bay	35.51	121.04	HZW	North Yellow Sea
+North Yellow Sea	36.86	123.82	NYS	North Yellow Sea
+Middle Yellow Sea	35.03	123.42	MYS	North Yellow Sea
+South Yellow	32.49	124.82	SYS	North East China
+North East China Sea	31.03	125.82	NECS	North East China
+Yangtze River Estuary	31.54	122.78	YRE	North East China
+Yilan	24.71	121.86	YL	Taiwan
+Penghu	23.6	119.56	PH	Taiwan
+Ishikawa (off Tedori River)	36.49	136.97	TDR	Japan
+Ishikawa (NaNao City)	37.06	136.97	NNC	Japan
+Ehime	33.23	132.5	EHM	Japan
+Shizouka	34.92	138.4	SZO	Japan
+Chiba	35.58	139.96	CHB	Japan
+Miyagi	38.32	141.1	MYG	Japan

@@ -1,0 +1,35 @@
+Species	site	code	latitude_dms	longitude_dms	sample
+G. divaricata	"Canal del Estacio (Murcia, Spain)"	CDE	37d44m49.22sN	 0d44m12.94sW	30
+G. divaricata	"Port Saplaya (Valencia, Spain)"	PSA	39d30m38.80sN	 0d19m5.11sW	34
+G. divaricata	"Cala de Gestell (Tarragona, Spain)"	GES	40d57m29.94sN	 0d52m47.78sE	23
+G. divaricata	"Estany des Peix (Formentera, Spain)"	EST	38d43m39sN	 1d24m26sE	30
+G. divaricata	"Colònia Sant Jordi (Mallorca, Spain)"	JOR	39d18m42.56sN	 2d59m36.28sE	21
+G. divaricata	"Isla de Bendor (Marseille, France)"	BEN	43d7m41.80sN	 5d45m2.09sE	13
+G. divaricata	"Capo Gallo (Sicily, Italy)"	GAL	38d12m33.21sN	 13d16m55.36sE	30
+G. divaricata	"Porto Cesareo (Apulia, Italy)"	POC	40d11m71sN	 17d55m07.7sE	34
+G. divaricata	"San Foca, Otranto (Apulia, Italy)"	OTR	40d18m12sN	 18d24m17sE	29
+G. divaricata	"Torre Guaceto (Apulia, Italy)"	TOG	40d42m99s?N	 17d48m003sE	30
+G. divaricata	Kornati National Park (Croatia)	KOR	43d46m31sN	 15d37m51sE	31
+G. divaricata	Boka Kotorska (Montenegro)	BOK	42d24m88.8sN	 18d38m11.1sE	35
+G. divaricata	"Karaburun Peninsula (Vlorë Country, Albania)"	KAP	40d26m35sN	 19d 29m08sE	16
+D. lebeche	Mohasedia (Morocco)	MOH	33d42m30.12sN	 7d22m44.70sW	26
+D. lebeche	"Sancti Petri (Cádiz, Spain)"	SAN	36d23m10.64sN	 6d12m30.27sW	30
+D. lebeche	"Punta Carnero (Gibraltar, Spain)"	PUN	36d04m21.15sN	 05d25m44.18s W	30
+D. lebeche	Ceuta (Spain)	CEU	35d53m43.76sN	 5d18m17.58sW	28
+D. lebeche	Cala Iris (Morocco)	IRI	35d9m6.52sN	 4d21m58.26mW	30
+D. lebeche	Faro Tres Forcas (Morocco)	FAR	35d26m8.84sN	 2d57m26.94mW	30
+D. lebeche	Isla Alborán (Spain)	ALB	35d56m16.8sN	 3d2m11.4mW	30
+D. lebeche	Sidi el Bachir (Morocco)	SID	35d5m20.24sN	 2d31m46.38sW	32
+D. lebeche	"Congreso (Islas Chafarinas, Spain)"	LAR	35d10m35.3sN	 2d26m23.9sW	30
+D. lebeche	"Isabel II (Islas Chafarinas, Spain)"	ISA	35d10m53.2sN	 2d25m53.5sW	30
+D. lebeche	"Rey Francisco (Islas Chafarinas, Spain)"	REY	35d11m3.7sN	 2d25m22.1sW	30
+D. lebeche	"Calnegre (Murcia, Spain)"	CAL	37d30m22.99sN	 1d25m00.92sW	31
+D. lebeche	"Cabo Palos (Murcia, Spain)"	PAL	37d37m49.64sN	 00d42m05.19sW	30
+D. lebeche	"Peñíscola (Castellón, Spain)"	PEÑ	40d21m40.36sN	 0d24m13.76sE	15
+D. lebeche	"La Foradada (Islas Columbretes, Spain)"	FOR	39d52m30sN	 0d40m16.0sE	30
+D. lebeche	"Portinatx (Ibiza, Spain)"	POR	39d6m54.86sN	 1d31m19.52sE	22
+D. lebeche	"Es Ram (Formentera, Spain)"	RAM	38d39m13.74sN	 1d31m22.84sE	30
+D. lebeche	"Es Ratjoli (Mallorca, Spain)"	ESR	39d38m3.60sN	 2d25m19.64sE	30
+D. lebeche	"Punta Prima (Menorca, Spain)"	PRI	39d48m50.34sN	 4d17s6.99mE	20
+D. lebeche	Bizerte (Tunisia)	BIZ	37d19m48.47sN	 9d51s53.61mE	25
+D. lebeche	Cape Bon (Tunisia)	HAO	37d5m17.19sN	 11d2s5.34mE	20

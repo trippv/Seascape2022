@@ -1,0 +1,16 @@
+site	code	region	latitude_dec	longitude_dec
+Apalachiola Bay	AP	Gulf of Mexico	29.661081	-85.00339
+Baratari Bay	BB	Gulf of Mexico	29.382179	-89.94267
+Charleston Bay	CH	Gulf of Mexico	32.7664882	-79.901339
+East Mississippi Sound	EMS	Gulf of Mexico	30.26626	-88.51994
+Galveston Bay	GB	Gulf of Mexico	29.444754	-94.82757
+Matagorda Bay	MAT	Gulf of Mexico	28.529411	-96.319301
+Mobile Bay	MB	Gulf of Mexico	30.405516	-87.994139
+Sabine Lake	SL	Gulf of Mexico	29.883394	-93.842804
+San Antonio Bay	SA	Gulf of Mexico	28.364667	-96.734529
+Santee Rivers	ST	Atlantic	32.98931	-79.384377
+St. Helena Sound	SHS	Atlantic	32.452939	-80.439386
+St. John´s River	SJR	Atlantic	29.051774	-80.789423
+Stono-North Edisto Rivers	SR	Atlantic	32.70926	-80.009892
+West Mississippi Sound	WMS	Atlantic	30.186692	-89.034467
+Winyah Bay	WB	Atlantic	33.259408	-79.231566

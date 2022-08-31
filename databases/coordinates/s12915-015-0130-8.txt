@@ -1,0 +1,11 @@
+site	region	code	latitude_dms	longitude_dms	Average salinity	average annual temperature	sample
+Copenhagen	Kattegat	COP	55d42m05sN	12d35m55sE	10.76	9.85	36
+Forsmark	Bothnian Sea	FOR	60d24m09sN	18d11m05sE	4.73	7.82	36
+Karlskrona	Baltic Proper	KAR	56d10m13sN	15d24m34sE	7.55	9.43	36
+Kaskinen	Bothnian Sea	KAS	62d23m02sN	25d54m52sE	3.15	7.51	36
+Karsibor	Karsibor	KBOR	53d52m14sN	14d17m03sE	7	9.69	36
+Letipea	Gulf of Finland	LET	59d32m58sN	26d35m49sE	4.63	7.8	36
+Mariager Fjord	Kattegat	MAR	56d38m58sN	09d57m05sE	26.82	9.88	36
+Nyköping	Baltic Proper	NYK	58d39m04sN	17d06m02sE	6.58	8.2	36
+Petergofa	Gulf of Finland	PET	60d03m14sN	29d58m16sE	0	7.42	36
+Pyhäjoki	Bothnian Bay	PJM	64d28m42sN	24d13m13sE	3.44	6.09	36

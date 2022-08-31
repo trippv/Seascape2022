@@ -1,0 +1,129 @@
+site	year	latitude_dec	longitude_dec
+Baja California	2006	31.37	117.45
+Baja California	2006	28.31	117.27
+Baja California	2006	31.39	117.41
+Baja California	2006	31.38	117.47
+Baja California	2006	31.39	117.43
+Baja California	2006	31.42	117.43
+Baja California	2006	31.42	117.32
+Baja California	2006	31.43	117.3
+Baja California	2006	31.43	117.26
+Baja California	2006	31.44	117.28
+Baja California	2006	31.05	117.19
+Baja California	2006	30.54	117.2
+Baja California	2006	31.15	117.33
+Southern California	2012	34.483333	-122.25
+Southern California	2012	32.466667	-122.316667
+Southern California	2012	34.666667	-122.433333
+Southern California	2012	35.733333	-125.15
+Southern California	2012	35.733333	-124.583333
+Southern California	2012	35.616667	-122.65
+Southern California	2012	35.816667	-122.4
+Southern California	2012	36.1	122.833333
+Southern California	2012	36.1	-122.916667
+Southern California	2012	34.9	-122
+Southern California	2012	34.9	-122.866667
+Southern California	2012	35.5	-120
+Southern California	2012	35.166667	-122.65
+Southern California	2012	35.433333	-122.316667
+Southern California	2012	35.1	-122.6
+Southern California	2012	34.3	-122.216667
+Southern California	2012	33.966667	-122.1
+Northern California	2010	40.7	-125.07
+Northern California	2010	40.89	-125.8
+Northern California	2010	40.88	-125.84
+Northern California	2010	40.94	-125.66
+Northern California	2010	40.95	-125.65
+Northern California	2010	40.95	-125.66
+Oregon	2009	44.83166667	-125.07
+Oregon	2009	44.81833333	-125
+Oregon	2009	44.83333333	-125
+Oregon	2009	44.83333333	-124.97
+Oregon	2009	44.815	-125
+Oregon	2009	44.82666667	-125
+Oregon	2009	44.84	-125
+Oregon	2009	44.82	-125
+Oregon	2009	44.81666667	-125
+Oregon	2009	44.85833333	-125.03
+Oregon	2009	44.85666667	-125.03
+Oregon	2009	44.855	-125.04
+Oregon	2009	44.85833333	-125.06
+Oregon	2009	44.855	-125.06
+Oregon	2009	44.85166667	-125.1
+Oregon	2009	44.85333333	-125.13
+Oregon	2009	44.85333333	-125.1
+Oregon	2009	44.87833333	-125.14
+Washington	2013	46.2666	-125.1666
+Washington	2013	46.25	-125.1166
+Washington	2013	46.2333	-125.1166
+Washington	2013	46.25	-125.1333
+Washington	2013	46.2666	-125.1333
+Washington	2013	46.25	-125.1
+Washington	2013	46.2833	-125.1666
+British Columbia	2005	51.5	-131.2
+British Columbia	2005	51.51	-132.2
+British Columbia	2005	51.03	-130.59
+British Columbia	2005	51.55	-131.32
+British Columbia	2005	51.5	-131.3
+British Columbia	2005	51.02	-131.46
+British Columbia	2005	51.36	-131.22
+British Columbia	2005	51.54	-131.3
+British Columbia	2005	51.5	-131.29
+British Columbia	2005	51	-131.45
+British Columbia	2005	51.03	-130.5
+British Columbia	2005	51.42	-131.26
+British Columbia	2005	51.43	-131.25
+British Columbia	2005	51.56	-131.32
+British Columbia	2005	51.46	-131.32
+Hawaii	2010	19.63	-156
+Northwest of Hawaii	2016	33.583333	-161.566667
+Northwest of Hawaii	2016	33.483333	-161.95
+Northwest of Hawaii	2016	31.983333	-160.683333
+Northwest of Hawaii	2016	31.983333	-160.716667
+Northwest of Hawaii	2016	32	-160.733333
+Northwest of Hawaii	2016	32.133333	-160.733333
+Northwest of Hawaii	2016	32.533333	-160.45
+Northwest of Hawaii	2016	32.866667	-159.233333
+Northwest of Hawaii	2016	32.6	-161.183333
+Northwest of Hawaii	2016	32.6	161.183333
+Northwest of Hawaii	2016	32.633333	-161.15
+Northwest of Hawaii	2016	32.55	-160.016667
+Northwest of Hawaii	2016	32.6	-159.966667
+Northwest of Hawaii	2016	32.033333	-160.5
+Northwest of Hawaii	2016	31.95	-160.283333
+Northwest of Hawaii	2016	31.933333	-160.283333
+Northwest of Hawaii	2016	33.066667	-162.966667
+Northwest of Hawaii	2016	33.066667	-162.95
+Northwest of Hawaii	2016	32.116667	-157.35
+Northwest of Hawaii	2016	32.45	-157.35
+Northwest of Hawaii	2016	32.45	-157.366667
+Northwest of Hawaii	2016	32.5	-157.533333
+Japan	2016	34.666667	143.55
+Japan	2016	35.083333	143.933333
+Japan	2016	35.266667	142.916667
+Japan	2016	35.016667	142.85
+Japan	2016	35.216667	142.916667
+Japan	2016	35.166667	142.966667
+Philippine Sea	2016	16.933333	137.116667
+Philippine Sea	2016	16.916667	137.333333
+Philippine Sea	2016	16.933333	137.333333
+Philippine Sea	2016	16.933333	137.516667
+Philippine Sea	2016	16.933333	137.633333
+Philippine Sea	2016	17.083333	138.083333
+Philippine Sea	2016	17.116667	138.083333
+Philippine Sea	2016	17.166667	138.133333
+Philippine Sea	2016	15.433333	140.9
+Philippine Sea	2016	15.5	140.9
+Philippine Sea	2016	14.983333	140.95
+Philippine Sea	2016	14.916667	140.85
+Philippine Sea	2016	14.833333	140.8
+Philippine Sea	2016	14.8	140.733333
+Philippine Sea	2016	15.183333	140.583333
+Philippine Sea	2016	15.216667	140.633333
+Philippine Sea	2016	15.266667	140.65
+Philippine Sea	2016	15.333333	140.75
+Philippine Sea	2016	15.433333	140.3
+Philippine Sea	2016	16	139.933333
+Philippine Sea	2016	15.95	139.85
+Philippine Sea	2016	15.916667	139.8
+Philippine Sea	2016	15.85	139.766667

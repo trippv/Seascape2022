@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Seascape2022 – fastsimcoal2_upstream</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Seascape2022</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">About</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fastsimcoal2_upstream" id="toc-fastsimcoal2_upstream" class="nav-link active" data-scroll-target="#fastsimcoal2_upstream">Fastsimcoal2_upstream</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="fastsimcoal2_upstream" class="level1">
+<h1>Fastsimcoal2_upstream</h1>
+<p>Code for <em>fastsimcoal2</em> analyses run on an HPC cluster (Amarel at Rutgers) before transferring output files to local computer for downstream analyses.</p>
+<p><em><strong>Note:</strong> A lot of this code was first written by Jennifer Hoey, and modified for this project. For more information, check out her repo: <a href="https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/" class="uri">https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/</a>. </em></p>
+<p>For <em>fastsimcoal2</em>, had to first generate the observed multidimensional site frequency spectrum (MSFS) with <code>easySFS.py</code> from (<a href="https://github.com/isaacovercast/easySFS" class="uri">https://github.com/isaacovercast/easySFS</a>). To main neutrality and retain rare variants, built the observed MSFS with a dataset unfiltered for minor allele counts but without outlier SNPs (5,662 SNPs). All individuals were included.</p>
+<p><strong>To generate MSFS</strong></p>
+<p>Opened up conda on Amarel and created environment for easySFS:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> use /projects/community/modulefiles <span class="co">#to access community modules not in core set</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load py/data-science/stack/5.1.0-kp807 <span class="co">#module with anaconda</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> easySFS <span class="co">#create easySFS environment</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels bioconda <span class="co">#channel with bioinformatics packages</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> bioconda dadi pandas <span class="co">#add dadi &amp; pandas packages</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#downloaded easySFS repo from GitHub and unzipped in ~/Programs directory</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> easySFS-master.zip</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> easySFS-master easySFS</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> easySFS</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 777 easySFS.py <span class="co">#to make executable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Copied appropriate VCF file (<code>output.hicov2.snps.only.mac1.nooutliersfinal.reordered.vcf</code>) to <code>~/Programs/easySFS</code> directory. This VCF was made by filtering original vcf <code>output.hicov2.snps.only.vcf</code> to keep only SNPs that were polymorphic (had at least 1 individual with at least 1 minor allele) and were not outlier SNPs. The individuals were also re-ordered to match the geographic order (Japan, Philippines, Indonesia). Filtering was done with VCFtools.</p>
+<p>Previewed SFS with following code:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate easySFS</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./easySFS.py</span> <span class="at">-i</span> output.hicov2.snps.only.mac1.nooutliersfinal.reordered.vcf <span class="at">-p</span> popfile.txt <span class="at">--preview</span> <span class="at">-a</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#popfile.txt is a 2 column, tab-separated file with individuals in first column and pop name in second. </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Sometimes need to recreate this as doesn't always properly read all populations.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#NOTE: -a flag forces easySFS to keep all SNPs within each RAD locus (doesn't randomly sample 1 SNP per locus)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Preview shows # segregating sites depending on # individuals sampled in each pop.</p>
+<ul>
+<li>Because, if missing sites, downsampling can increase # of segregating sites. Since we don’t have missing data, used full dataset (all individuals).</li>
+</ul>
+<p>Created SFS with following code:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./easySFS.py</span> <span class="at">-i</span> output.hicov2.snps.only.mac1.nooutliersfinal.reordered.vcf <span class="at">-p</span> popfile.txt <span class="at">--proj</span> 16,20,14 <span class="at">-a</span> <span class="at">-o</span> output <span class="at">-f</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Above code creastes all possible SF (each pop, 2D-joint SFS and MSFS) formatted for input into <em>dadi</em> and <em>fastsimcoal2</em>. Used the MSFS for <em>fastsimcoal2</em> (<code>output_MSFS.obs</code> renamed to <code>apcl_MSFS.obs</code>).</p>
+<p><strong>To run <em>fastsimcoal2</em></strong></p>
+<p>First, specified the model with the <code>*.tpl</code> and <code>*.est</code> files. The <code>*.tpl</code> file contains the model structure (sampling scheme information, number/types of demographic events, etc.). The <code>*.est</code> file contains the prior distributions for each parameter estimated in the model.</p>
+<ul>
+<li><strong>NOTE:</strong> It’s important to keep naming consistent! All of these files (along with the <code>*.obs</code> file) should have the same prefix, so <em>fastsimcoal2</em> knows what to read in.</li>
+</ul>
+<p>The <code>apcl.tpl</code> file (also included in the <code>Data</code> directory):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Any place where there is a word is a parameter that fsc is going to estimate</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Any place where there is a number is a set parameter</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#fsc works BACKWARDS in time (coalescent model). So the first demographic event happened most recently in time, then moves backwards from there</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">//Amphiprion</span> connectivity: Japan, Philippines, Indonesia</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">3</span> samples</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">//Population</span> effective sizes <span class="er">(</span><span class="ex">=2N,</span> number of alleles<span class="kw">)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">POPONE</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">POPTWO</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ex">POPTHREE</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">//Sample</span> sizes: <span class="co"># samples (=2N, number of alleles)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">16</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">20</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ex">14</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">//Growth</span> rates</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ex">//Number</span> of migration matrices : If 0 : No migration between demes</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ex">3</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ex">//migration</span> matrix 0: sources in rows, sinks in columns <span class="er">(</span><span class="ex">backwards</span> in time<span class="kw">)</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> DISPONE 0</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="ex">DISPONE</span> 0 DISPTWO</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> DISPTWO 0</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ex">//migration</span> matrix 1: At 3600 gen <span class="er">(</span><span class="ex">when</span> J <span class="kw">&amp;</span> <span class="ex">P</span> merge to P<span class="kw">)</span><span class="ex">,</span> migration only P-I</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> 0 0</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> 0 DISPTWO</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> DISPTWO 0</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="ex">//migration</span> matrix 2: At TDIVTWO <span class="er">(</span><span class="ex">when</span> P <span class="kw">&amp;</span> <span class="ex">I</span> merge to I<span class="kw">)</span><span class="ex">,</span> no migration</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> 0 0</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> 0 0</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> 0 0</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="ex">//Historical</span> event format: time, src, sink, % mig, new Ne scaling factor for sink, new r, new mig matrix:</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span> historical events</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="ex">3600</span> 0 1 1 1 0 1</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="ex">TDIVTWO</span> 1 2 1 1 0 2</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="ex">//Number</span> of chromosomes</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> 0</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="ex">//Number</span> of linkage blocks on Chromosome 1</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="ex">//Per</span> Block: Data type, No. of loci, Recombination rate to the right-side locus, plus optional parameters</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="ex">FREQ</span> 1 0 1E-8 OUTEXP</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>apcl.est</code> file (also included in the <code>Data</code> directory):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">//</span> Priors and rules file</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">//</span> <span class="pp">*********************</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[PARAMETERS]</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">//#isInt?</span>       <span class="co">#name   #dist.  #min    #max</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">//all</span> N are in number of haploid individuals</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> POPONE logunif 100 100000 output</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> POPTWO logunif 100 100000 output</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> POPTHREE logunif 100 100000 output</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> DISPONE unif 0 0.3 output</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> DISPTWO unif 0 0.3 output</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> TDIVTWO unif 3600 6000 output</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ex">[RULES]</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[COMPLEX</span> PARAMETERS]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once the <code>.tpl</code>, <code>.est</code>, and MSFS files were created, downloaded <em>fastsimcoal26</em> to Amarel and unzipped/installed in <code>~/Programs</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> http://cmpg.unibe.ch/software/fastsimcoal2/downloads/fsc26_linux64.zip</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> fsc26_linux64.zip</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> fsc26_linux64</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 777 fsc26 <span class="co">#make executable</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#copied .tpl, .est, and .obs files to this fsc26_linux64 as well</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Created a directory in <code>/scratch</code> to read, write, and execute fsc jobs from (should go faster and don’t have to worry about storage space in home directory).</p>
+<p>Created <code>run_fscmodel_singlethread.sbatch</code> script for <em>fastsimcoal2</em> to perform 100,000 coalescent simulations to estimate the SFS, with 40 optimization (ECM) cycles. This script was modified from <a href="https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/run_model6_singlethread.sh" class="uri">https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/run_model6_singlethread.sh</a>.</p>
+<ul>
+<li>This script sets up file structure that will be important for gleaning information from the replicate runs and easily grabbing maximum likelihoods and parameter estimates. Briefly, it makes a <code>slurm-out</code> directory that contains the output from each replicate run. In this directory, are the same number of directories as replicate runs, each named by the slurm job id the run was submitted under. The script then copies all input files into each <code>slurm-out/SLURM_JOBID</code> directory and runs <em>fastsimcoal2</em> from there each time.
+<ul>
+<li>It also writes several settings files that help with troubleshooting.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=fsc</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=p_mlp195,main #p_mlp195 for pinsky lab partition, otherwise use main (or EOAS or E&amp;E)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N1</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n1                        #28 cores on amarel</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1         #28 cores on amarel</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">############################</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=5000               #128GB /node of amarel</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=10:00:00            #max time is 3 days:  3-00:00:00  or  72:00:00</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --export=ALL</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --requeue       #optional: this prevent the job from restarting if the node fails or the jobs is preempted.</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -o /scratch/rdc129/Aclarkii_Demo/slurm-%j.out   ## the default file name is "slurm-%j.out"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -e /scratch/rdc129/Aclarkii_Demo/slurm-%j.err</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=</span><span class="re">END</span><span class="co">                # Type of email notification- </span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL,ALL</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-user=rene.clark@rutgers.edu # Email to which notifications will be sent</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#############################################################</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># standard output is saved in a file:  slurm-$SLURM_JOBID.out</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#############################################################</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/slurm-out/<span class="va">$SLURM_JOBID</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /home/<span class="va">$USER</span>/Programs/fsc26_linux64/fsc26 /scratch/<span class="va">$USER</span>/Aclarkii_Demo/apcl.tpl /scratch/<span class="va">$USER</span>/Aclarkii_Demo/apcl.est /scratch/<span class="va">$USER</span>/Aclarkii_Demo/apcl_MSFS.obs /scratch/<span class="va">$USER</span>/Aclarkii_Demo/slurm-out/<span class="va">$SLURM_JOBID</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/slurm-out/<span class="va">$SLURM_JOBID</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#create a personal dirctory on the node scratch disk if needed.</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#mkdir -p /mnt/scratch/$USER/$SLURM_JOBID</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#this will tell you when the job started and the host.</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="va">date</span><span class="op">=</span><span class="kw">`</span><span class="fu">date</span> <span class="st">"+%Y.%m.%d-%H.%M.%S"</span><span class="kw">`</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="va">hostname</span><span class="op">=</span><span class="kw">`</span><span class="fu">hostname</span><span class="kw">`</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">#to print the variable -- echo</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$date</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$hostname</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co">#obtain the environment variables</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co">#this is useful for reference and troubleshooting issues.</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span> <span class="op">&gt;</span>               /scratch/<span class="va">$USER</span>/Aclarkii_Demo/slurm-out/<span class="va">$SLURM_JOBID</span>/slurm-<span class="va">$SLURM_JOBID</span>-env-all.out</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> SLURM <span class="op">&gt;</span>  /scratch/<span class="va">$USER</span>/Aclarkii_Demo/slurm-out/<span class="va">$SLURM_JOBID</span>/slurm-<span class="va">$SLURM_JOBID</span>-env-SLURM.out</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="co">#start time</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co">#start the simulation</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> /home/rdc129/Programs/fsc26_linux64/fsc26 <span class="at">-t</span> apcl.tpl <span class="at">-e</span> apcl.est <span class="at">-n</span> 100000 <span class="at">-m</span> <span class="at">-u</span> <span class="at">-M</span> <span class="at">-L</span> 40 <span class="at">-0</span> <span class="at">--numBatches</span> 1 <span class="at">--cores</span> 1 <span class="op">&gt;</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/slurm-out/<span class="va">$SLURM_JOBID</span>/<span class="va">$SLURM_JOBID</span>-fastsimcoal26.<span class="va">$SLURM_NNODES</span>.<span class="va">$SLURM_NODELIST</span>.<span class="va">$date</span>.a.txt</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co">#end time</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once the model was running well, wrote a shell script (<code>run_sbatch.sb</code>) to submit the previous script many times in a job array (need multiple replicate runs to pick best parameter estimates from). This script was modified from <a href="https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/run_sbatch_Ne.sh" class="uri">https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/run_sbatch_Ne.sh</a>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#submits previous script 50x</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=p_mlp195,main</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">50</span><span class="dt">}</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run_fscmodel_singlethread.sbatch</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sleep</span> 1</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once all 50 replicate runs finished running, wrote <code>cat_ML.sbatch</code> script to concatenate the results (<code>.bestlhoods</code> files) into a single file.</p>
+<ul>
+<li>This script was modified from <a href="https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/cat_bestlhoods" class="uri">https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/cat_bestlhoods</a>.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/slurm-out/<span class="pp">*</span>/apcl/apcl.bestlhoods</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'1d'</span> <span class="st">"</span><span class="va">$file</span><span class="st">"</span> <span class="op">&gt;</span> <span class="st">"</span><span class="va">$file</span><span class="st">.trimmed"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/slurm-out/<span class="pp">*</span>/apcl/apcl.bestlhoods.trimmed <span class="op">&gt;</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/apcl_raw.bestlhoods</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Copied <code>apcl_raw.bestlhoods</code> file to local computer and read into Excel to sort by maximum likelihood (ML) and find the parameters from the best ML run. These are the best point estimates.</p>
+<p><strong>To create 95% CIs</strong></p>
+<p>To create the 95% CIs, first had to create 100 bootstrapped SFS from the raw SFS to run in <em>fastsimcoal2</em>. Used the <code>Bootstrap_forSFS.R</code> script to bootstrap <code>output.hicov2.snps.only.mac1.nooutliersfinal.reordered.vcf</code> 100X. Then used easySFS to create MSFS from each of the bootstrapped VCFs (with the same code as was used to create the original MSFS).</p>
+<p>Moved bootstrapped MSFS to <em>fastsimcoal2</em> <code>/scratch</code> directory. Each MSFS was placed in its own directory, all of which were placed in a <code>bootstrapSFS</code> directory (ex. the first bootstrapped MSFS was placed in <code>/scratch/rdc129/Aclarkii_Demo/bootstrapSFS/apcl_boot1</code>).</p>
+<p>Wrote <code>run_fscmodel_CI_singlethread.sbatch</code> script to run <em>fastsimcoal2</em> for each of the bootstrapped directories. This script was modified from <a href="https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/run_fsc_Ne_CI_singlethread.sh" class="uri">https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/run_fsc_Ne_CI_singlethread.sh</a>.</p>
+<ul>
+<li>The structure of this script is very similar to the one for the original MSFS (creates <code>slurm-out/SLURM_JOBID</code> directories in each bootstrapped directory). One major difference is this script uses the parameter values from the best-fit model with the observed dataset as the starting values for each replicate run (to speed things up). This is the <code>apcl.pv</code> file from the best-fit model, and should be copied to the starting directory (here, <code>scratch/rdc129/Aclarkii_Demo</code>) before running the script.</li>
+<li>To run the script, need <code>dir_names.txt</code> file, which is a list of all the bootstrapped SFS directory names (apcl_boot1, apcl_boot2, apcl_boot3, etc.).</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=fsc_boot</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=p_mlp195,p_eoas_1,p_deenr_1,main #p_mlp195 for pinsky lab partition, p_eoas_1 for EOAS partition, p_deenr_1 for E&amp;E partition</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N1</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n1                        #28 cores on amarel</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1         #28 cores on amarel</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">############################</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=5000               #128GB /node of amarel</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=33:00:00            #max time is 3 days:  3-00:00:00  or  72:00:00</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --export=ALL</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --array=1-100</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --requeue       #optional: this prevent the job from restarting if the node fails or the jobs is preempted.</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -o /scratch/rdc129/Aclarkii_Demo/slurm-%A_%a.out   #%A is the jobid and %a is the array index</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -e /scratch/rdc129/Aclarkii_Demo/slurm-%A_%a.err   #/dev/null</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=</span><span class="re">END</span><span class="co">                #Type of email notification- </span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL,ALL</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-user=rene.clark@rutgers.edu #Email to which notifications will be sent</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#############################################################</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># standard output is saved in a file:  slurm-$SLURM_JOBID.out</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#############################################################</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting task </span><span class="va">$SLURM_ARRAY_TASK_ID</span><span class="st">"</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="va">DIR</span><span class="op">=</span><span class="va">$(</span><span class="fu">sed</span> <span class="at">-n</span> <span class="st">"</span><span class="va">${SLURM_ARRAY_TASK_ID}</span><span class="st">p"</span> dir_names.txt<span class="va">)</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$DIR</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /home/<span class="va">$USER</span>/Programs/fsc26_linux64/fsc26 /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/apcl.tpl /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span>/apcl_boot.tpl</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/apcl.est /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span>/apcl_boot.est</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/apcl_boot_MSFS.obs /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/apcl.pv /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span>/apcl_boot.pv</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a personal dirctory on the node scratch disk if needed.</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co">#mkdir -p /mnt/scratch/$USER/$SLURM_JOBID</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="co">#this will tell you when the job started and the host.</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="va">date</span><span class="op">=</span><span class="kw">`</span><span class="fu">date</span> <span class="st">"+%Y.%m.%d-%H.%M.%S"</span><span class="kw">`</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="va">hostname</span><span class="op">=</span><span class="kw">`</span><span class="fu">hostname</span><span class="kw">`</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co">#to print the variable -- echo</span></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$date</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$hostname</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="co">#obtain the environment variables</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a><span class="co">#this is useful for reference and troubleshooting issues.</span></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span> <span class="op">&gt;</span>               /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span>/slurm-<span class="va">$SLURM_JOBID</span>-env-all.out</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> SLURM <span class="op">&gt;</span>  /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span>/slurm-<span class="va">$SLURM_JOBID</span>-env-SLURM.out</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="co">#start time</span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="co">#start the simulation</span></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> ./fsc26 <span class="at">-t</span> apcl_boot.tpl <span class="at">-e</span> apcl_boot.est <span class="at">-n</span> 100000 <span class="at">-m</span> <span class="at">-u</span> <span class="at">-M</span> <span class="at">-L</span> 40 <span class="at">-0</span> <span class="at">--numBatches</span> 1 <span class="at">--cores</span> 1 <span class="at">--initValues</span> apcl_boot.pv  <span class="op">&gt;</span> /scratch/<span class="va">$USER</span>/Aclarkii_Demo/bootstrapSFS/<span class="va">$DIR</span>/slurm-out/<span class="va">$SLURM_JOBID</span>/<span class="va">$SLURM_JOBID</span>-fastsimcoal26.<span class="va">$SLURM_NNODES</span>.<span class="va">$SLURM_NODELIST</span>.<span class="va">$date</span>.a.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once the model was running well, modified <code>run_sbatch.sb</code> to submit the previous script 20 times in a job array (need multiple replicate runs to pick best parameter estimates from).</p>
+<ul>
+<li>This results in 20 replicate runs for each bootstrapped MSFS.</li>
+</ul>
+<p>Once all replicate runs for the bootstrapped data finished, wrote <code>cat_CIs.sbatch</code> script to concatenate the results (<code>.bestlhoods</code> files) from each bootstrapped MSFS into a single file.</p>
+<ul>
+<li>This script was modified from <a href="https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/cat_cis" class="uri">https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/cat_cis</a>.</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /scratch/rdc129/Aclarkii_Demo/bootstrapSFS/apcl_boot1/slurm-out/<span class="pp">*</span>/apcl_boot/apcl_boot.bestlhoods.trimmed <span class="op">&gt;</span> /scratch/rdc129/Aclarkii_Demo/bootstrapSFS/apcl_boot1/cis_sfs_summary</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#repeat lines for each boot directory (apcl_boot1:apcl_boot100)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, wrote <code>cat_max_summary_CIs.sbatch</code> script to find the parameters from the ML run for each of the 100 bootstrapped MSFS and concatenate into <code>fsc_maxLhood_CI_summary.txt</code>.</p>
+<ul>
+<li>This script was modified from <a href="https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/cat_max_summary" class="uri">https://github.com/pinskylab/NePADE/blob/master/demo_modeling/fsc_models/cat_max_summary</a>.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> /scratch/rdc129/Aclarkii_Demo/bootstrapSFS/<span class="pp">*</span>/cis_sfs_summary</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Sorts the file by column 6 (likelihood) in descending order and then prints the last row (maximum since it's negative)</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-nk</span> 7 <span class="st">"</span><span class="va">$file</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 1 <span class="op">&gt;</span> <span class="st">"</span><span class="va">$file</span><span class="st">.max"</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Concatenates the run with the maximum likelihood for each SFS into a file</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /scratch/rdc129/Aclarkii_Demo/bootstrapSFS/<span class="pp">*</span>/cis_sfs_summary.max <span class="op">&gt;</span> /scratch/rdc129/Aclarkii_Demo/bootstrapSFS/fsc_maxLhood_CI_summary.txt</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Copied <code>fsc_maxLhood_CI_summary.txt</code> file to local computer, converted to <code>.csv</code>, and read into R to calculate 95% CIs with <code>fsc_CIs.R</code>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

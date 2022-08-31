@@ -1,0 +1,11 @@
+site	code	region	latitude_dms	longitude_dms	sample	date
+"Rushan, Yellow Sea"	RS	China	36d43mN	 121d39mE	20	15-Oct
+"Zhoushan, East China Sea"	ZS	China	30d03mN	 122d21mE	20	15-Nov
+"Xiamen, East China Sea"	XM	China	24d22mN	 118d13mE	10	16-Mar
+"Zhuhai, South China Sea"	ZH	China	22d16mN	 113d36mE	10	15-Sep
+"Fangchenggang, South China Sea"	FCG	China	21d30mN	 108d21mE	20	15-Oct
+"Niigata, Sea of Japan"	NI	Japan	37d57mN	 138d5mE	10	15-Jul
+"Kochi, Pacific Ocean"	KO	Japan	33d27mN	 133d34mE	10	12-Sep
+"Yokosuka, Pacific Ocean"	YO	Japan	35d17mN	 139d43mE	10	11-Nov
+"Tottori, Sea of Japan"	TO	Japan	35d33mN	 134d12mE	10	15-Jun
+"Iki Island, Sea of Japan"	IK	Japan	33d47mN	 129d38mE	10	12-Sep

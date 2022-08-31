@@ -1,0 +1,27 @@
+site	code	sample	latitude_dms	longitude_dms	Salinity	Date	Spawning season
+Gulf of Bothnia (Kalix)	BK	47	65d52mN	22d43mE	3	1980 June 29	Summer
+Bothnian Sea (Hudiksvall)	BU	100	61d45mN	17d30mE	6	2012 April 19	Spring
+Bothnian Sea (Gävle)	BÄV	100	60d43mN	17d18mE	6	2012 May 7	Spring
+Bothnian Sea (Gävle)	BÄS	100	60d43mN	17d18mE	6	2012 July 18	Summer
+Bothnian Sea (Gävle)	BÄH	100	60d44mN	17d35mE	6	2012 September 4	Autumn
+Bothnian Sea (Hästskär)	BH	50	60d35mN	17d48mE	6	2013 May 22	Spring
+Central Baltic Sea (Vaxholm)	BV	50	59d26mN	18d18mE	6	1979 August 27	Spring
+Central Baltic Sea (Gamleby)	BG	49	57d50mN	16d27mE	7	1979 August 20	Spring
+Central Baltic Sea (Kalmar)	BR	100	57d39mN	17d07mE	7	2012 May 09	Spring
+Central Baltic Sea (Karlskrona)	BA	100	56d10mN	15d33mE	7	2012 May 30	Spring
+Central Baltic Sea	BC	100	55d24mN	15d51mE	8	2011 October 18	Unknown
+Southern Baltic Sea (Fehmarn)	BF	50	54d50mN	11d30mE	12	1979 September 23	Autumn
+Kattegat (Träslövs.läge)	KT	50	57d03mN	12d11mE	20	1978 October 23	Unknown
+Kattegat (Björköfjorden)	KB	100	57d43mN	11d42mE	23	2012 March 12	Spring
+Skagerrak (Brofjorden)	SB	100	58d19mN	11d21mE	25	2012 March 20	Spring
+Skagerrak (Hamburgsund)	SH	49	58d30mN	11d13mE	25	1979 March 19	Spring
+North Sea	NS	49	58d06mN	06d10mE	35	1979 August 05	Autumn
+Atlantic Ocean (Bergen)	AB1	49	64d52mN	10d15mE	35	1980 February 07	Spring
+Atlantic Ocean (Bergen)	AB2	8	60d35mN	05d00mE	33	2013 May 22	Spring
+Atlantic Ocean (Höfn)	AI	100	65d49mN	12d58mW	35	2011 September 15	Spring
+Bonavista Bay	WBoB	49	48d49mN	53d20mW	35	2014 June 25	Autumn
+Fortune Bay	WFB	50	47d17mN	55d38mW	35	2014 May 26	Spring
+Inner Baie Des Chaleurs	WInB	41	48d00mN	65d51mW	35	2014 May 8	Spring
+Northumberland Strait	WNsS	49	46d19mN	64d09mW	35	2014 May 6	Spring
+Northumberland Strait	WNsF	50	45d44mN	62d36mW	35	2014 September 16	Autumn
+German Banks	WGeB	48	43d16mN	66d18mW	35	2014 August 28	Autumn

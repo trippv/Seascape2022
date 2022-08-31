@@ -1,0 +1,14 @@
+site	code	sample	longitude_dec	latitude_dec	Fst_neutral	Fst__neutral_signif	Fst_out	Fst_out_signif	direction	reference
+Outback Middle (OM)	OM	29	115.067	-34.319	0	no	0	no	east-west	OM
+Coral Patch (CP)	CP	28	115.178	-34.379	0.002	no	0.001	no	east-west	OM
+Windy Outside (WO)	WO	29	116.035	-34.873	0.004	no	0.018	no	east-west	OM
+Parrys Bay (PB)	PB	29	117.181	-35.033	0.005	no	0.085	signif	east-west	OM
+Inner Island (II)	II	29	118.174	-35.003	0.008	no	0.486	signif	east-west	OM
+Whalebone Pt (WP)	WP	29	119.528	-34.364	0.008	no	0.182	signif	east-west	OM
+2 Mile Primary (2MP)	2MP	28	120.17	-33.972	0.01	no	0.414	signif	east-west	OM
+Masons (MS)	MS	29	120.506	-33.972	0.007	no	0.373	signif	east-west	OM
+Fanny Cove (FC)	FC	28	121.2	-33.856	0.015	signif	0.091	signif	east-west	OM
+Burton Rocks (BR)	BR	29	121.819	-33.909	0.008	no	0.087	signif	east-west	OM
+Rob Island (RI)	RI	28	122.238	-34.035	0.009	no	0.065	signif	east-west	OM
+Ben Island (BI)	BI	29	122.751	-33.899	0.009	no	0.071	signif	east-west	OM
+Gulch (GL)	GL	28	123.259	-34.023	0.004	no	0.075	signif	east-west	OM

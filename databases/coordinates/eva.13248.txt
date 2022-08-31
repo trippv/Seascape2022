@@ -1,0 +1,24 @@
+code	site	longitude_dec	latitude_dec	sample	Ho	He
+IPI	Ipikituk River	-78.38	58.73	24	0.272	0.254
+SPI	Saputaliuk River	-78.36	58.7	17	0.292	0.26
+FMI	Five Mile Inlet	-78.21	58.56	24	0.25	0.258
+KOA	Korak River	-77.63	60.75	28	0.278	0.282
+CHU	Chukotat River	-78.02	60.79	15	0.283	0.289
+KOV	Kovik River	-77.7	61.36	21	0.267	0.282
+BDE	Deception Bay	-74.62	62.13	30	0.317	0.32
+DUQ	Duquet Lake	-74.53	62.06	44	0.313	0.318
+FRM	François-Malherbe Lake	-74.25	62.04	38	0.317	0.32
+DOU	Douglas Harbour	-72.65	62.06	29	0.308	0.316
+PAY	Payne River	-70.7	60.01	30	0.3	0.311
+CHR	Red Dog River	-69.79	59.3	39	0.291	0.294
+VOL	Voltz River	-69.66	59.25	25	0.302	0.293
+HAB†	Hopes Advance Bay	-69.63	59.32	24	0.296	0.298
+FEU	Leaf River	-70.11	58.77	40	0.268	0.264
+BER	Bérard River	-69.97	58.65	36	0.311	0.32
+GEO	George River	-65.95	58.69	37	0.313	0.314
+AKI	Akilasaaluk River	-65.4	59.06	17	0.312	0.32
+AVA	Avas Inlet	-72.64	64.01	23	0.285	0.289
+LHO	Lake Harbour	-69.82	62.82	38	0.313	0.291
+PRZ	Pritzler Harbour	-67.32	62.12	27	0.299	0.303
+KAM‡	Kamanatsuk River	-62.54	56.74	18	0.31	0.307
+ANA‡	Anaktalik Bay	-62.15	56.49	26	0.302	0.3

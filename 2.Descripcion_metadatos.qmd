@@ -1,0 +1,668 @@
+---
+title: "Descripción de metadatos"
+author: "Miguel Tripp-Valdez"
+format: 
+  html:
+    code-fold: show
+    toc: true
+    toc-location: left
+    number-sections: true
+    number-depth: 3
+    fontsize: 1em
+editor: visual
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+# Load libraries
+
+library(tidyverse)
+library(readxl)
+library(here)
+library(patchwork)
+library(easyalluvial) # to make alluvial plots
+library(ggimage) #to add icons to the plots
+library(egg)
+
+```
+
+This documents reports the data from the metanalysys up to the date `r format(Sys.time(), '%d %B, %Y')`
+
+
+
+
+```{r readData}
+meta_df <- readxl::read_xlsx(here::here("output","matrix_Revision_fourthRound.xlsx"), skip = 8, na = "NA")
+
+# save a backupfile
+write.csv(meta_df, here::here("output/tables/MAtriz_metadatos_backup.csv"), row.names = FALSE)
+
+```
+
+
+
+# Caracterización taxonomica de los metadatos
+
+
+:::{.callout-warning}
+##
+Algunos estudios reportan mas de un grupo taxonómico
+:::
+
+
+```{r icons}
+# make the table with the list of taxa icons
+
+# get full path for the icons
+icon_path <- list.files(here::here("misc/icons"), pattern = "icon_", full.names = TRUE)
+
+icons_df <- data.frame(tax_group = 
+                         c("Bivalve", "Coral","Crustacean", "Echinoderm", "Fish", "Gastropod", "Elasmobranch"),
+                       icon_path = icon_path)
+
+```
+
+
+```{r taxonomic}
+
+########################################
+# plot of taxonomic characterization ###
+#######################################
+
+taxa <- meta_df %>% 
+  
+  # use count to get the number of studies with each taxonomic group
+  group_by(Generic) %>% 
+  count() %>% 
+  ungroup() %>% 
+  
+  #merge table with the icon path
+  full_join(icons_df, by = c("Generic" = "tax_group")) %>% 
+  
+  #sort levels
+  mutate(Generic = as.factor(Generic)) %>% 
+  mutate(Generic = fct_reorder(Generic, n))
+
+# make plot for taxa
+
+ggplot(taxa, aes(x = n, y = Generic))+
+  geom_bar(stat = "identity")+
+  theme_bw()+
+  expand_limits(x = c(1, 35))+
+  labs(x = "number of studies", y = "Taxa")+
+  geom_text(aes(x = n , y = Generic, label = n), nudge_x = 1)+
+  geom_image(aes(x = n, y = Generic, image = icon_path), 
+             nudge_x = 3, size = 0.075)+
+  theme(plot.margin = margin(0,5,0,5,unit = "mm"),
+        panel.grid.major = element_blank())
+```
+
+# Caracterización de las regiones estudiadas
+
+Para cada estudio se clasificaron las regiones oceanograficas
+
+
+```{r Regions, eval = TRUE}
+regions <- meta_df %>% 
+  
+  #Separate rows
+  separate_rows(`World region`, sep = "; ") %>% 
+  
+  # All lower case
+  mutate(region = tolower(`World region`)) %>% 
+  
+  group_by(region) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(region = as.factor(region)) %>% 
+  #change order
+  mutate(region = fct_reorder(region, n))
+
+# make plot for region
+
+ggplot(regions, aes(x = n, y = region))+
+  geom_bar(stat = "identity")+
+  theme_bw()+
+  labs(x = "number of studies", y = "Region") + 
+  geom_text(aes(x = n, y = region, label = n), nudge_x = 1)
+```
+
+La región Noroeste del Atlántico (North West Atlantic) fue la región con mayor número de sitios de colecta (EEUU y Canadá), seguido del Suroeste del Pacífico (Sout West Pacific) con sitios de colecta en Australia y Nueva Zelanda. 
+
+
+Visualización de las regiones
+
+
+```{r read_coord_data, eval  = TRUE}
+
+# list coordenates files
+coord_files <- list.files(here("databases/coordinates"), 
+                          pattern = ".txt")
+
+coord_names <- str_remove(coord_files, pattern = ".txt")
+
+coord_files_df <- data.frame(coord_files, coord_names)
+
+
+# extract DOI from main table
+
+DOI_list <- meta_df %>% 
+  #filter only data with coord file
+  mutate(`Sampling coordinates` = tolower(`Sampling coordinates`)) %>% 
+  filter(`Sampling coordinates` == "yes") %>% 
+  
+  select(DOI, Generic) %>% 
+  #split the DOI and keep the last string after slash("/")
+  mutate(DOI_ID  = gsub("^.*/", "", DOI)) %>% 
+  
+  #remove duplicated DOI as some studies have many species
+  distinct(DOI_ID, .keep_all = TRUE)
+
+
+
+
+# Test How many files are not listed in the matrix?
+setdiff(DOI_list$DOI_ID, coord_names)
+
+# merge matrix files with list files
+
+DOI_list <- DOI_list %>% 
+  inner_join(coord_files_df, by = c("DOI_ID" = "coord_names"))
+```
+
+
+
+```{r make_coord_file, eval = TRUE}
+
+# use package `sp` to conver DMS to dec degrees
+
+coordinates_all <- data.frame()
+
+# start loop to fill the data
+
+for (file in 1:nrow(DOI_list)) {
+  
+  # 1. read each file
+   file_dt <- read.table(here("databases", "coordinates", DOI_list[file, "coord_files"]), 
+                      sep = "\t",header = TRUE)
+  #file_dt <- read_delim(here("databases", "coordinates", DOI_list[file, "coord_files"]), delim = "\t")
+  
+# Check colnames to convert DMS to DEC degrees if necesary
+ifelse(any(grepl("dec", colnames(file_dt))),
+         #if colnames says lats are in DEC, no convertion
+                 lats <- file_dt$latitude_dec, 
+         
+         #otherwise, convert with sp package
+                 lats <- sp::char2dms(file_dt$latitude_dms,
+                                      chd = "d", chm = "m", chs="s") %>% 
+           as.numeric()
+  )
+
+# convert longitude
+ifelse(any(grepl("dec", colnames(file_dt))),
+         #if colnames says lats are in DEC, no convertion
+                 lons <- file_dt$longitude_dec, 
+         
+         #otherwise, convert with sp package
+                 lons <- sp::char2dms(file_dt$longitude_dms,
+                                      chd = "d", chm = "m", chs="s") %>% 
+           as.numeric()
+  )
+
+
+# if sample column is present, add it to the table, otherwise add NAs  
+ifelse("sample" %in% colnames(file_dt), 
+       samples <- file_dt$sample, 
+       samples <- rep("NA", nrow(file_dt)))  
+    
+
+#if region is present, add it to the table, otherwise add NAs 
+ifelse("region" %in% colnames(file_dt),
+       region <- file_dt$region,
+       region <- rep("NA", nrow(file_dt)))
+
+# if site name is present, add it to the table, otherwise add NAs
+ifelse("site" %in% colnames(file_dt), 
+       site <- file_dt$site,
+       site <- rep("NA", nrow(file_dt)))
+
+# if site code is present, add it to the table, otherwise add NAs
+ifelse("code" %in% colnames(file_dt),
+      code <- file_dt$code,
+      code <- rep("NA", nrow(file_dt)))
+
+
+# if outlier´s Fst values are present add to table, otherwise add NAs
+ifelse("Fst_out" %in% colnames(file_dt), 
+       Fst_out <- file_dt$Fst_out,
+       Fst_out <- rep("NA", nrow(file_dt)))
+
+#if outlier Fst significance values are present, add to table, otherwise, add NAs
+ifelse("Fst_out_signif" %in% colnames(file_dt), 
+       Fst_out_signif <- file_dt$Fst_out_signif,
+       Fst_out_signif <- rep("NA", nrow(file_dt)))
+
+# set values for table
+latitude <- as.numeric(lats)
+longitude <- as.numeric(lons)
+DOI <- rep(as.character(DOI_list[file, "DOI_ID"]), nrow(file_dt))
+tax_group <- rep(as.character(DOI_list[file, "Generic"]), nrow(file_dt))
+N <- samples
+
+
+# data frame with values
+output <- data.frame(DOI = DOI, 
+                     tax_group = tax_group, 
+                     latitude = latitude,
+                     longitude = longitude, 
+                     N = samples, 
+                     region = region, 
+                     code = code, 
+                     site = site,
+                     Fst_out = Fst_out,
+                     Fst_out_signif = Fst_out_signif)
+
+
+# merge table with previous in loop
+coordinates_all <- rbind(coordinates_all, output) 
+
+}
+
+# save table in the table file
+
+write.table(coordinates_all, file = here("output", "tables", "Coordinate_data_allStudies.csv"),
+            sep = ",", row.names = FALSE)
+
+```
+
+
+
+```{r plot_studies, fig.height=10 ,fig.width=16, eval = TRUE}
+#| column: screen-inset-shaded
+
+
+#remove NA from summary table
+#coordinates_all <- coordinates_all[complete.cases(coordinates_all), ]
+
+#round data to a 1 x 1 degree for plotting
+
+coordinates_all$lats_round <- round(coordinates_all$latitude)
+coordinates_all$lon_round <- round(coordinates_all$longitude)
+
+
+
+#Calculat the frequency of point on the grid
+frequency_grid <- coordinates_all %>% 
+  group_by(lon_round, lats_round) %>% 
+  count()
+
+################################################
+################ plot world map ################
+################################################
+
+world <- rnaturalearth::ne_countries(scale = "small", returnclass = "sf")
+reworld <- sf::st_transform(world, '+proj=moll')
+
+
+frequency_grid <- frequency_grid[complete.cases(frequency_grid), ]
+
+recoord <- frequency_grid %>% 
+  sf::st_as_sf(coords = c("lon_round", "lats_round"))
+
+recood_geo <- sf::st_set_crs(recoord, 4326)
+#sf::st_is_longlat(recood_geo)
+
+
+recood_geo_moll <- sf::st_transform(recood_geo, '+proj=moll')
+#sf::st_is_longlat(recood_geo_moll)
+
+
+
+#plot coastline map with the grid
+
+ggplot(data = reworld)+
+  geom_sf(color = "grey85", fill = "tan1",)+
+  
+  theme_bw()+
+  geom_sf(data = recood_geo_moll, aes(col = n))+
+# Add frequency grid data
+  # geom_point(data = recood_geo_moll,
+  #            aes(x = lon_round, y = lats_round, color = n), size = 2.5, pch = 15)+
+
+  theme_minimal(base_size = 16)+
+  theme(plot.margin = unit(c(0,0,1,0), "cm"),
+        legend.position = "right",
+        panel.background = element_rect(fill = "aliceblue"))+
+  labs(color = "Number of samplig sites \nper 1x1 grid")
+```
+
+
+# Caracterización de las variables ambientales
+
+El principal objetivo de este análisis es identificar si los patrones de conectividad o divergecia genética estan asociadas a varibles oceanograficas. A continuación se describe cuales variables fueron las utilizadas en los estudios analizados
+
+:::{.callout-warning}
+##
+En la tabla de metadatos se incluyeron estudios en los cuales no se evalúo la asociación con el ambiente, por lo que varios de los estudios no contienen información ambiental
+:::
+
+
+
+```{r environment_variables, eval = TRUE}
+
+##########################################################
+## Environmental variables from the metadata #############
+#########################################################
+
+
+environmental_dt <- meta_df %>% 
+  
+  #select only environmental data and DOI
+  select( "data" = `Environmental data`, DOI, `World region`) %>% 
+  
+  #change all names to lower case
+  mutate(data = tolower(data)) %>% 
+  
+  #separate rows for studies with many environmetal data
+  separate_rows(data, sep = "; ") %>% 
+  
+  # TO facilitate the visualization, environmental variables were clasified by type, layer and statistic
+  mutate(parameter = case_when(
+         str_detect(data, "temp") ~ "temperature",
+         str_detect(data, "sali") ~ "salinity",
+         str_detect(data, "oxygen") ~ "oxygen",
+         str_detect(data, "chloro") ~ "chlorophyll a",
+         str_detect(data, "\\bph\\b") ~ "pH",
+         str_detect(data, "current") ~ "current",
+         str_detect(data, "particulate") ~ "particulate matter",
+         str_detect(data, "latitude") ~ "latitude",
+         str_detect(data, "longitude") ~ "longitude",
+         str_detect(data, "precipitation") ~ "precipitation",
+         str_detect(data, "depth") ~ "depth",
+         is.na(data) ~ "no data",
+         TRUE ~ "other*"
+)) %>% 
+  
+  # Calsification of layer (surface, bottom, air)
+  mutate(layer = case_when(
+    str_detect(data, "surface") ~ "surface",
+    str_detect(data, "bottom") ~ "bottom",
+    str_detect(data, "air") ~ "air",
+    str_detect(data, "longitude") ~ "coordinates",
+    str_detect(data, "latitude") ~ "coordinates",
+    is.na(data) ~ "no data",
+    
+    #Anything tha is not specify is assome to be in the surface
+    TRUE ~ "surface"
+  )) %>% 
+  
+  # clasification on statistic (mean, range, min, max, std, seasonal,etc)
+  mutate(stat = case_when(
+    str_detect(data, "mean|average") ~ "mean",
+    str_detect(data, "spring|autum|summer|winter") ~ "season",
+    str_detect(data, "max") ~ "maximun",
+    str_detect(data, "min") ~ "minimmun",
+    str_detect(data, "range") ~ "range",
+    str_detect(data, "standard") ~ "standard deviation",
+    str_detect(data, "std dev|std dv") ~ "standard deviation",
+    str_detect(data, "coeficient of variation") ~ "coeficient of variation",
+    str_detect(data, "area|km|depth|volume|longitude|latitude|amplitude|height|m3") ~ "geographic data",
+    
+    TRUE ~ "Other"
+  ))
+  
+  
+  
+  
+```
+
+
+:::{.callout-warning}
+##
+Muchos de los estudios descritos en los metadatos incluyen también variables geográficas (latitud, longitud, profundidad) o corrientes oceánicas. Sin embargo, para esta descripción preliminar solo nos enfocamos a las variables fisico-quimicas y biológicas.
+:::
+
+
+```{r alluvialplot, fig.height=8 ,fig.width=10, eval = TRUE}
+#| column: body-outset
+
+
+# remove rows with no data
+environmental_dt <- environmental_dt[complete.cases(environmental_dt), ]
+
+# For exploratory analysis, remove all georaphical data
+environmental_dt <- environmental_dt[environmental_dt$stat != "geographic data", ]
+
+
+# change the table to add number of counts
+
+alluvial_env <- alluvial_wide(select(environmental_dt, -data, -DOI, -`World region`),
+              fill_by = "first_variable", 
+              stratum_label_size = 3.5, 
+              auto_rotate_xlabs = FALSE)+
+  # Use theme nothing to remove all labels and grid
+  theme_nothing()+
+  labs(caption = "* includes parameters such a nitrate, phosphates, silicates, etc that were used in \n reduced number of studies")
+
+
+
+print(alluvial_env)
+
+```
+
+
+Gráfico responsivo  
+
+```{r, eval = TRUE}
+#| column: body-outset
+
+parcats::parcats(alluvial_env, data_input = environmental_dt, marginal_histograms = TRUE)
+```
+
+
+# Asociación de divergencía genética con el ambiente
+
+A continuación se muestra cual fue el principal factor ambiental asociado a divergencia genética en los estudios donde se detectó asociación con parámetros ambientales
+
+:::{.callout-warning}
+##
+Dependiendo del método utilizado por los autores para evaluar el principal factor ambiental, algunos estudios presentan uno o mas _main drivers_. Por lo tanto, se incorporó un _nudge_ a los puntos en el mapa y evitar que se translapen entre ellos.
+:::
+
+
+```{r environ_associationn, fig.height=10 ,fig.width=16, eval = TRUE}
+#| column: page
+
+
+# Generate a table with DOI from each paper, wether they found environemntal association and which is the main driver
+
+
+# 1. identify how many studies showed evidence of marker-environment association, even if there was no structure
+
+drivers_assos <- meta_df %>% 
+  
+  #select main columns
+  select(DOI, `Environmental association`, `Main environemntal driver adaptive`, Neutral) %>% 
+
+  #change columns names
+  rename(association = `Environmental association`,
+         main_driver = `Main environemntal driver adaptive`) %>% 
+  
+    
+  #to lower case columns
+  mutate(association = tolower(association),
+         main_driver = tolower(main_driver)) %>% 
+  
+  
+  # convert NA from the column envioronmental association to "not evaluated"
+  mutate(association = replace_na(association, replace = "Not evaluated"))
+
+
+
+# 2. identify the main driver in studies where genetic neutral or adaptive genetic structure was found
+
+main_driver_assos <- drivers_assos %>% 
+  
+  # Filter studies with panmixia
+  filter(Neutral != "Panmixia") %>% 
+  
+  
+  #separate rows when multiple main drivers are present 
+  separate_rows(main_driver, sep = "; ") %>% 
+  
+  #make a clasification of main driver regardless of the statistical approach
+  mutate(main_driver_class = case_when(
+    str_detect(main_driver, "temperature") ~ "temperature",
+    str_detect(main_driver, "salinity") ~ "salinity",
+    str_detect(main_driver, "oxygen") ~ "oxygen",
+    str_detect(main_driver, "chlorophyll") ~ "chlorophyll a",
+    is.na(main_driver) ~ "no data",
+    TRUE ~ "other"
+  ))
+  
+  
+## Make Inset plot
+inset_plot <- main_driver_assos %>% 
+  count(main_driver_class) %>% 
+  filter(main_driver_class != "no data") %>% 
+  ggplot(., aes(x = " ", y = n, fill = main_driver_class))+
+  geom_bar(stat = "identity", width = 1)+
+  coord_polar("y", start = 0)+
+  theme_nothing()+
+  theme(legend.position = "none")+
+  labs(title = "Main environmental drivers (%)")
+
+
+
+
+
+# Merge this information with the coordinates data using the DOI
+main_driver_map <- main_driver_assos %>% 
+  
+  #split the DOI and keep the last string after slash("/")
+  mutate(DOI  = gsub("^.*/", "", DOI)) %>% 
+  
+  #merge tables by DOI_ID
+  
+  inner_join(coordinates_all, by = "DOI") %>% 
+  
+  #Filter studies with assosiation
+  filter(association == "yes") %>% 
+  
+  #select only coordinate data and the main driver
+  select(latitude, longitude, main_driver_class) %>% 
+
+  # Add a manual nudge to plot two points with different main drivers
+  group_by(latitude, longitude) %>% 
+  
+  mutate(n_var = n()) %>% 
+  
+  ungroup() %>% 
+  
+  mutate(new_lat = ifelse(n_var > 1 & main_driver_class == "temperature", latitude, latitude + 0.75)) %>% 
+  mutate(new_lon = ifelse(n_var > 1 & main_driver_class == "temperature", longitude, longitude + 0.75))
+  
+  
+  
+  
+
+############################################
+################# plot map #################
+############################################
+
+
+#world <- rnaturalearth::ne_countries(scale = "small", returnclass = "sf") #already run above
+#reworld <- sf::st_transform(world, '+proj=moll') # already run above
+
+# remove NAs if present
+main_driver_grid <- main_driver_map[complete.cases(main_driver_map), ]
+
+main_driver_grid_recode <- main_driver_grid %>% 
+  sf::st_as_sf(coords = c("new_lon", "new_lat"))
+
+# transform the grid to Mello projection
+main_driver_grid_recode_geo <- sf::st_set_crs(main_driver_grid_recode, 4326)
+#sf::st_is_longlat(recood_geo)
+
+
+main_driver_grid_recode_geo <- sf::st_transform(main_driver_grid_recode_geo, '+proj=moll')
+#sf::st_is_longlat(recood_geo_moll)
+
+
+
+#plot coastline map with the grid
+
+assos_map <- ggplot(data = reworld)+
+  geom_sf(color = "grey85", fill = "tan1",)+
+  
+  theme_bw()+
+  geom_sf(data = main_driver_grid_recode_geo, 
+          aes(col = main_driver_class))+
+  theme_minimal(base_size = 16)+
+  theme(plot.margin = unit(c(0,0,1,0), "cm"),
+        legend.position = "right",
+        panel.background = element_rect(fill = "aliceblue"))+
+  labs(color = "Main driver")
+
+
+print(assos_map)
+
+
+
+
+
+
+
+```
+
+
+Mapa responsivo
+
+```{r}
+#| column: page
+
+plotly::ggplotly(assos_map)
+
+```
+
+
+
+
+
+```{r envir_structure, eval = FALSE}
+
+adaptive_environment <- meta_df %>% 
+  
+  #Filter data with neutral genetic structure and Adaptive evidence of IBE
+  filter(Neutral != "Panmixia",
+         str_detect(Adaptive, "IBE")) %>% 
+  
+  # Additionally, we inclued the data from abalone from Baja California
+  rbind(filter(meta_df, DOI %in% c("10.7717/peerj.9722", "10.1093/icesjms/fsab098"))) %>% 
+  
+  # extract DOI for matching with coordinates table
+  #split the DOI and keep the last string after slash("/")
+  mutate(DOI_ID  = gsub("^.*/", "", DOI))
+
+
+
+
+# Filter coordinates df to extract data from grid
+
+coordinates_maps <- coordinates_all %>% 
+  
+  #filter hits from adaptive_environemnt
+  filter(DOI %in% adaptive_environment$DOI_ID) %>% 
+
+  # filter(between(lon_round, 10, 40)) %>% 
+  # filter(between(lats_round, -40, -20)) %>% 
+  
+  #merge coordinate data with icons
+  inner_join(icons_df, by = "tax_group")
+  
+
+```
+
+

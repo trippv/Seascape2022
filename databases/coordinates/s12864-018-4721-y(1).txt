@@ -1,0 +1,7 @@
+code	site	latitude_dec	longitude_dec	sample
+PN	Port Nollot	-29.256	16.866	40
+HB	Hondeklipbaii	-30.327	17.271	40
+BB	Brandsebaai	-31.28	17.875	40
+LB	Lamberstbaai	-32.104	18.298	40
+JB	Jacobsbaai	-32.973	17.881	40
+SP	Sea Point	-33.913	18.384	40

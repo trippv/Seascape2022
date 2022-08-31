@@ -1,0 +1,17 @@
+site	code	sample	year	latitude_dec	longitude_dec	species
+"Norway, Hordaland"	Nor	1	2013	60.541	4.846	Phymatolithon calcareum
+"Northern Ireland, Zara Shoal"	Zar	12	2011	54.379	-5.564	Phymatolithon calcareum
+"Wales, Milford Haven"	Mil	1	2011	51.704	-5.076	Phymatolithon calcareum
+"England, Fal Estuary"	Fal	10	2011	50.164	-5.028	Phymatolithon calcareum
+"England, The Manacles"	Man	6	2015	50.05	-5.05	Phymatolithon calcareum
+"France, Morlaix"	Mor	12	2011	48.711	-3.951	Phymatolithon calcareum
+"France, Trévignon"	Tre	9	2011	47.795	-3.887	Phymatolithon calcareum
+"France, La Rochelle"	Roc	2	2013	46.233	-1.381	Phymatolithon calcareum
+"Spain, Bornalle"	Bor	12	2011	42.789	-9.02	Phymatolithon calcareum
+"Spain, Illa de Ons"	Ons	11	2011	42.395	-8.915	Phymatolithon calcareum
+"Portugal, Armaçao de Pêra"	Arm	2	2011	37.027	-8.317	Phymatolithon calcareum
+"Scotland, Loch Sween"	ScoPpur	12	2019	55.983	-5.632	Phymatolithon purpureum
+"England, Fal Estuary"	Lcor05	2	2011	50.164	-5.028	Lithothamnion corallioides
+"France, Morlaix"	Lcor08	1	2011	48.711	-3.951	Lithothamnion corallioides
+"France, Trévignon"	Lcor09	1	2011	47.795	-3.887	Lithothamnion corallioides
+"France, La Rochelle"	Lcor11	1	2011	46.233	-1.381	Lithothamnion corallioides
