@@ -1,4 +1,0 @@
-site	code	latitude_dec	longitude_dec	sample
-"Agawam River, USA"	AGA	41.98	-70.52	NA
-"Panama City Beach, Florida"	PAN	29.96	-85.82	NA
-"Proto Alegre, Brazil"	POR	-30.29	-51.21	NA

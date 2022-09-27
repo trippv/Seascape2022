@@ -1,4 +1,0 @@
-code	site	region	group	latitude_dec	longitude_dec
-kiel	Kiel	Kiel	Kiel	54.518	10.411
-G2	Baltic G2	Baltic	Baltic	55.075	16.981
-G1	Baltic G1	Baltic	Baltic	54.48	19.279

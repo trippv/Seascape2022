@@ -1,8 +1,0 @@
-code	sampling	region	sample	latitude_dec	longitude_dec
-BB	Bramston Beach	north Queensland	60	-17.353	146.0527
-EB	Etty Bay	north Queensland	50	-17.5617	146.109
-TSV	Townsville	north Queensland	22	-19.0821	146.8175
-GC	Gulf of Carpentaria	Northern Territory	35	-14.9977	138.7808
-JBG	Joseph Bonaparte Gulf	Northern Territory	34	-14.6818	128.3714
-TIW	Tiwi Island	Northern Territory	56	-11.8668	131.8315
-NKB	Nickol Bay	Western Australia	26	-20.697	116.8632

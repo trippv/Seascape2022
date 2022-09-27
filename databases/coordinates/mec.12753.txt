@@ -1,9 +1,0 @@
-site	code	sample	latitude_dms	longitude_dms	region	group
-Vogslækur	ICE	34	64d69mN	22d33mW	1	1
-Ringhals	RHG	30	57d21mN	12d27mE	1	1
-Lough Erne	LG	33	54d46mN	7d77mW	1	1
-Burrishoole	BG	29	53d90mN	9d58mW	1	1
-Gironde	GG	37	44d86mN	0d42mW	1	1
-Canet	CAG	31	42d70mN	3d15mE	1	1
-Valencia	VG	32	39d46mN	0d24mW	1	1
-Oved Sebou	MOR	33	34d26mN	6d70mW	1	1

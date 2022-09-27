@@ -1,4 +1,0 @@
-site	code	latitude_dec	longitude_dec	sample
-Japan	JP	33.005133	132.5047	8
-Philipines	PH	10.87304	124.7122	10
-Indonesia	In	-0.652217	119.739	7

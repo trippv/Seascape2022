@@ -1,9 +1,0 @@
-site	code	latitude_dec	longitude_dec
-Hatfields Beach	HA	-36.577039	174.731909
-Stanmore Bay	ST	-36.620317	174.733969
-Browns Bay	BB	-36.714884	174.751892
-Opito Bay	OB	-35.233925	174.163637
-Mt. Maunganui	MM	-37.629744	176.181678
-Mahia Peninsula	MP	-39.147591	177.825889
-Worser Bay	WB	-41.314553	174.829762
-Kaikoura	KK	-42.397841	173.716269

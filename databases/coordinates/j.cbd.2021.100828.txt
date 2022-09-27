@@ -1,4 +1,0 @@
-site	code	latitude_dec	longitude_dec
-Dalian	DL	38.959201	121.709811
-Qingdao	QD	36.114805	120.216369
-Xiamen	XM	24.408929	118.166842
