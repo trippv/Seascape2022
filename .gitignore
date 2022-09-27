@@ -6,5 +6,9 @@ PGDSpider_2.1.1.5
 Plink
 databases/environment
 databases/genomic_repositories
+databases/bibliographic
+databases/coordinates
+output
+misc
 scripts
 /.quarto/

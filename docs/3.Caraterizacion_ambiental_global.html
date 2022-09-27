@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Miguel A. Tripp-Valdez">
+
+<title>Seascape2022 - Caracterización ambiental global OISST</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Seascape2022</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">About</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#descripción" id="toc-descripción" class="nav-link active" data-scroll-target="#descripción"> <span class="header-section-number">1</span> Descripción</a></li>
+  <li><a href="#temperatura-promedio" id="toc-temperatura-promedio" class="nav-link" data-scroll-target="#temperatura-promedio"> <span class="header-section-number">2</span> Temperatura promedio</a></li>
+  <li><a href="#desviación-estandar" id="toc-desviación-estandar" class="nav-link" data-scroll-target="#desviación-estandar"> <span class="header-section-number">3</span> Desviación Estandar</a></li>
+  <li><a href="#amplitud" id="toc-amplitud" class="nav-link" data-scroll-target="#amplitud"> <span class="header-section-number">4</span> Amplitud</a></li>
+  <li><a href="#curtosis" id="toc-curtosis" class="nav-link" data-scroll-target="#curtosis"> <span class="header-section-number">5</span> Curtosis</a></li>
+  <li><a href="#asimetria-skewness" id="toc-asimetria-skewness" class="nav-link" data-scroll-target="#asimetria-skewness"> <span class="header-section-number">6</span> Asimetria (Skewness)</a></li>
+  <li><a href="#bimodalidad" id="toc-bimodalidad" class="nav-link" data-scroll-target="#bimodalidad"> <span class="header-section-number">7</span> Bimodalidad</a></li>
+  <li><a href="#descripcion-de-series-de-tiempo-como-ejemplo" id="toc-descripcion-de-series-de-tiempo-como-ejemplo" class="nav-link" data-scroll-target="#descripcion-de-series-de-tiempo-como-ejemplo"> <span class="header-section-number">8</span> Descripcion de series de tiempo como ejemplo</a>
+  <ul class="collapse">
+  <li><a href="#ubicación-de-los-puntos" id="toc-ubicación-de-los-puntos" class="nav-link" data-scroll-target="#ubicación-de-los-puntos"> <span class="header-section-number">8.1</span> ubicación de los puntos</a></li>
+  <li><a href="#histogramas-de-frecuencia" id="toc-histogramas-de-frecuencia" class="nav-link" data-scroll-target="#histogramas-de-frecuencia"> <span class="header-section-number">8.2</span> histogramas de frecuencia</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Caracterización ambiental global OISST</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Miguel A. Tripp-Valdez </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="descripción" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Descripción</h1>
+<ol type="1">
+<li><p>Se descargaron los datos de Raynolds (OISST) diarios desde <strong>1981</strong> hasta <strong>2021</strong> en formato netCDF (un archivo por año).</p></li>
+<li><p>Se unieron todos los los netCDF en uno solo utilizando el programa <strong>CDO</strong>.</p></li>
+<li><p>Se estimaron cada uno de los estadísticos utilizando el paquete <em>raster</em>.</p></li>
+</ol>
+</section>
+<section id="temperatura-promedio" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Temperatura promedio</h1>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/mean-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</section>
+<section id="desviación-estandar" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Desviación Estandar</h1>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/sd-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</section>
+<section id="amplitud" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Amplitud</h1>
+<p>Definido como el valor máximo menos el valor mínimo de la series historica</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/range-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</section>
+<section id="curtosis" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Curtosis</h1>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Sobre curtosis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La curtosis es una estadística que determina el grado de concentración de los valores de una variable en torno al centro de la distribución de frecuencias.</p>
+<p><strong>Una distribución normal tiene un valor de curtosis de 3</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="576"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>null device 
+          1 </code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/kurtosis-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</section>
+<section id="asimetria-skewness" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Asimetria (Skewness)</h1>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</section>
+<section id="bimodalidad" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Bimodalidad</h1>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Sobre la prueba de Hartigan
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La prueba de Hartigan (Hartigan´s DIP test) se puede definir como: “<em>The dip test measures multimodality in a sample by the maximum difference, over all sample points, between the empirical distribution function, and the unimodal distribution function that minimizes that maximum difference</em>”</p>
+<p>La prueba resulta en un valor estadístico (DIP value) y un valor de significancía. De acuerdo al autor de la prueba, un valor de significancia menor a 0.05 indica una bimodalidad significativa, valores mayores de 0.05 pero menores de 0.10 sugieren una bimodalidad con significancia marginal.</p>
+<p><strong>un valor P cercano a 0 indican que la serie de tiempo es AL MENOS bimodal</strong></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</section>
+<section id="descripcion-de-series-de-tiempo-como-ejemplo" class="level1 page-columns page-full" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Descripcion de series de tiempo como ejemplo</h1>
+<section id="ubicación-de-los-puntos" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="ubicación-de-los-puntos"><span class="header-section-number">8.1</span> ubicación de los puntos</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/map_poits-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/eval_points-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</section>
+<section id="histogramas-de-frecuencia" class="level2 page-columns page-full" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="histogramas-de-frecuencia"><span class="header-section-number">8.2</span> histogramas de frecuencia</h2>
+<div class="cell column-screen-inset-shaded quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="960"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="960"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-5-5.png" class="img-fluid" width="960"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-5-6.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-5-7.png" class="img-fluid" width="960"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="3.Caraterizacion_ambiental_global_files/figure-html/unnamed-chunk-5-8.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

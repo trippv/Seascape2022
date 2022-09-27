@@ -62,21 +62,16 @@ knitr::kable(metadata_filtrado, caption = "Lista de estudios y regiones de trans
 
 A continuación se muestra los sitios de muestreo en cada una de las regiones.
 
+::: {callout-note}
+Las variables oceanograficas se descargaron de CMEMS utilizando la base de datos **GLOBAL_REANALYSIS_PHY_001_031** para temperatura y salinidad, y **GLOBAL_MULTIYEAR_BGC_001_029** para clorodila A.
 
-
-:::{callout-note}
- Las variables oceanograficas se descargaron de CMEMS utilizando la base de datos **GLOBAL_REANALYSIS_PHY_001_031** para temperatura y salinidad, y **GLOBAL_MULTIYEAR_BGC_001_029** para clorodila A. 
- 
- En todos los casos, se descargaron datos mensuales de cada región.
+En todos los casos, se descargaron datos mensuales de cada región.
 :::
-
-
-
 
 ```{r coordTable}
 
 ########_________________________________________________________________________######
-######## Extract coordinate from coordinate directory and bind to a single table ######
+######## Extract coordinate from coordinate directory and bind as a single table ######
 
 
 # use package `sp` to conver DMS to dec degrees
@@ -208,23 +203,21 @@ dev.off()
 ```
 :::
 
-
-
-
-
-
 ```{r plot_function}
 #################################################
 #### Function for plotting data within the loop #
 #################################################
+
+
 
 plot_raster_stat <- function(x, stat = "stat", variable = variable){
   
   
   # convert raster to df
   nc_df <- raster::as.data.frame(x, xy=TRUE, na.rm=TRUE)
+  
+  
   ### fitler the coordinate data to the map area
-
   nc_lats <- range(nc_df$y)
   nc_lons <- range(nc_df$x)
 
@@ -233,12 +226,17 @@ plot_raster_stat <- function(x, stat = "stat", variable = variable){
           between(longitude, min(nc_lons), max(nc_lons)))
 
   # labels for plotting
-  label_name <- ifelse(variable == "temperature", "SST (°C)", variable)
+  label_name <- ifelse(str_detect(variable, "temperature"), "SST (°C)", variable)
+  title_name <- ifelse(str_detect(variable, "temperature"), str_replace_all(variable, 
+                                                                        pattern = "_", 
+                                                                        replacement = " "), variable)
   caption <- basename(ncfile)
   caption <- gsub("(-monthly).*", "", caption)
   
+
+  
   # plot
-map_plot <- ggplot()+
+  map_plot <- ggplot()+
   # add raster layer
   geom_raster(aes(x=x, y=y, fill=layer), data=nc_df) +
   # define color palette of raster layer
@@ -252,7 +250,7 @@ map_plot <- ggplot()+
   geom_point(data = coords_map,
              aes(x = longitude, y = latitude, color = DOI), size = 3)+
   # labels
-  labs(title = paste0(variable," ", stat),
+  labs(title = paste0(title_name," ", stat),
        caption = paste0("Data:", caption),
        x = "Longitude",
        y = "Latitude") +
@@ -277,10 +275,8 @@ print(map_plot)
 }
 ```
 
-:::{.panel-tabset}
-
-
-### Temperatura 
+::: panel-tabset
+### Temperatura superficial
 
 ```{r cmems_data_temp, eval = TRUE}
 #| label: plot-regions-temperature
@@ -306,7 +302,7 @@ countries <- ne_countries(scale = "medium", returnclass = "sf")
 ### Start loop to plot the map from each reagion
 
 
-variable <- "temperature"
+variable <- "sea_surface_temperature"
 
 # list the availbable maps for TEMPERATURE data
 
@@ -371,8 +367,100 @@ plot_raster_stat(nc_kurtosis, stat = "Kurtosis", variable = variable)
 ```
 
 
-### Salinidad
+### Temperatura fondo (22 m)
 
+```{r cmems_data_temp_bottom, eval = TRUE}
+#| label: plot-regions-temperature-bottom
+#| column: screen-inset-shaded
+#| layout-ncol: 2
+
+
+####_____________________________________________________#####
+### plot the environemntal variables downloaded from cmems####
+####______________________________________________________####
+
+
+### Used dataset: global reanalysis PHY 001 - 031 - grepv2 - mnstd-monthly
+### downloaded date: 12/07/2022
+
+# import countries layer from Natural Earth
+library(rnaturalearth)
+library(rnaturalearthdata)
+
+countries <- ne_countries(scale = "medium", returnclass = "sf")
+
+
+### Start loop to plot the map from each reagion
+
+
+variable <- "sea_bottom_temperature"
+
+# list the availbable maps for TEMPERATURE data
+
+ncfile_list <- list.files(path = here("databases/environment/cmems", variable),
+                          full.names = FALSE)
+
+
+#
+
+for (map in 1:length(ncfile_list)) {
+
+
+# Set the path for the netcdf
+ncfile <- here("databases/environment/cmems",variable, ncfile_list[map])
+
+
+# Import NetCDF
+nc <- ncdf4::nc_open(ncfile)
+
+
+# Print information about the NetCDF file
+#print(nc)
+
+
+### Multiband
+# import multi-band NetCDF file
+nc_multi <- raster::brick(ncfile)
+
+#### Calculate statistics #######
+
+# calculate statistic: mean value
+nc_mean <- raster::calc(nc_multi, fun = mean)
+
+# calculate statistic: standard deviation
+nc_sd <- raster::calc(nc_multi, fun = sd)
+
+# calculate statistic: amplitude (max - min)
+nc_range <- raster::calc(nc_multi, fun = function(x) {max(x) - min(x)})
+
+# calculate statistic: kurtosis (from moments package)
+nc_kurtosis <- raster::calc(nc_multi, fun = function(x) {moments::kurtosis(x)})
+
+
+
+
+# plot raster for verification
+#raster::plot(nc_mean)
+
+# rotate the raster to match -180 to 180 coordinates
+# nc_mean <- raster::rotate(nc_mean)
+## no need to rotate for this databas
+
+## Use plot function to plot and save each of the maps
+plot_raster_stat(nc_mean, stat = "Mean", variable = variable)
+plot_raster_stat(nc_sd, stat = "Sta Desv", variable = variable)
+plot_raster_stat(nc_range, stat = "Range",variable = variable)
+plot_raster_stat(nc_kurtosis, stat = "Kurtosis", variable = variable)
+
+
+# end of loop
+}
+```
+
+
+
+
+### Salinidad
 
 ```{r cmems_data_sal, eval = TRUE}
 #| label: plot-regions-salinity
@@ -463,10 +551,7 @@ plot_raster_stat(nc_kurtosis, stat = "Kurtosis", variable = variable)
 }
 ```
 
-
 ### Clorofila A
-
-
 
 ```{r cmems_data_chla, eval = TRUE}
 #| label: plot-regions-chla
@@ -557,8 +642,4 @@ plot_raster_stat(nc_kurtosis, stat = "Kurtosis", variable = variable)
 # end of loop
 }
 ```
-
-
-
-
 :::

@@ -11,3 +11,4 @@ To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 * [Descripción de la busqueda bibliográfica](1.Busqueda_bibliografica.qmd)
 * [Caracteriación general de los metadatos](2.Descripcion_metadatos.qmd)
 * [Caracterización ambiental](3.Caraterizacion_ambiental.qmd)
+* [Caracterización global (OISST)](3.Caraterizacion_ambiental_global.qmd)

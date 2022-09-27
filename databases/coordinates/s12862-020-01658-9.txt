@@ -1,0 +1,10 @@
+site	code	latitude_dec	longitude_dec	sample
+North Atlantic	NA	53.828578	-9.99047	NA
+Northern Irish Sea	NIR	54.738506	-4.839755	NA
+Southern Irish Sea	SIS	53.345826	-3.55207	NA
+English Channel	EC	48.749268	-1.654428	NA
+Bay of Biscay	BB	43.64117	-1.654428	NA
+Balearic Sea	BS	39.275813	-0.163423	NA
+Iberian Peninsula	IP	38.32512	-8.770584	NA
+North Africa	NAF	33.5541	-7.889536	NA
+Tyrrhenian Sea	TS	41.138939	13.526706	NA

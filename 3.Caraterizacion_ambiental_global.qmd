@@ -1,0 +1,450 @@
+---
+title: "Caracterización ambiental global OISST"
+author: "Miguel A. Tripp-Valdez"
+format: 
+  html:
+    code-fold: show
+    toc: true
+    toc-location: left
+    number-sections: true
+    number-depth: 3
+    fontsize: 1em
+    fig-width: 10
+    fig-height: 8
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(here)
+library(tidyverse)
+library(diptest)
+library(rnaturalearth)
+library(raster)
+library(sf)
+```
+
+
+```{r functions}
+# define functions 
+
+#1 For transforming the dataframes to robinson projection
+# set robinson projection
+robinson <- CRS("+proj=robin +over")
+
+
+convert_df_to_robinson <- function(x){
+  # Open the dataframe with x,y,z values
+map_df <- read.csv(x)
+
+# limit the map to - 60 to 60 degrees
+map_df <- map_df |> 
+  filter(between(y, -61, 65))
+
+# make sure that order of the dataframe is correct
+map_df <- map_df |> 
+  dplyr::select(x, y, layer)
+
+#convert dataframe to raster
+raster_map_df <- rasterFromXYZ(map_df, crs = 4326)
+
+
+# perform the other way around but with robinson projection
+robinson_raster_map_df <-  projectRaster(raster_map_df,res = 5000, crs = robinson) 
+robinson_raster_map_df <- rasterToPoints(robinson_raster_map_df)
+robinson_raster_map_df <- as.data.frame(robinson_raster_map_df)
+
+}
+
+
+
+
+
+# download countries 
+countries <- ne_countries(scale = 50, returnclass = c("sf"))
+
+
+# bounding bow for delimiting the maps
+bb <- sf::st_union(sf::st_make_grid(
+  st_bbox(c(xmin = -180,
+            xmax = 180,
+            ymax = 90,
+            ymin = -90), crs = st_crs(4326)),
+  n = 100))
+
+bb_robinson <- st_transform(bb, as.character(robinson))
+
+# transform the coastline to robinson
+countries_robinson <- st_transform(countries, robinson)
+
+# 2: for plotting the map
+map_plot <- function(df) {
+ 
+
+ggplot()+
+  geom_raster(data = df, 
+              aes(x = x, y = y, fill = layer), interpolate = TRUE)+
+  #scale_fill_distiller(palette = "Spectral", name = "SST (°C)") +
+  geom_sf(data=bb_robinson,
+          colour='white',
+          linetype='solid',
+          fill = NA,
+          size=0.7) +
+  geom_sf(data=countries_robinson,
+          colour='grey75',
+          linetype='solid',
+          fill= "grey75",
+          size=0.3) +
+  
+    theme_void() +
+  # cut the map to the limits of the df
+  coord_sf(xlim = range(df$x), 
+           ylim = range(df$y), 
+           expand = F) +
+    guides(fill =guide_colourbar(title.position="top"))+
+  theme(legend.position = "bottom",
+    plot.subtitle = element_text(
+          color = "grey30",
+          size = 40,
+          hjust = 0.1),
+        plot.title = element_text(
+          family = "Prata",
+          color = "grey30",
+          size = 70,
+          hjust = 0.1),
+        plot.caption = element_text(
+          color = "grey30",
+          size = 25,
+          lineheight = 0.3),
+        plot.margin = margin(r = 10)
+  )
+}
+
+
+```
+
+# Descripción
+
+  1. Se descargaron los datos de Raynolds (OISST) diarios desde **1981** hasta **2021** en formato netCDF (un archivo por año).
+
+  2. Se unieron todos los los netCDF en uno solo utilizando el programa **CDO**.
+  
+  3. Se estimaron cada uno de los estadísticos utilizando el paquete _raster_. 
+
+
+
+# Temperatura promedio
+
+
+```{r mean, eval = TRUE}
+#open
+
+mean_df <- convert_df_to_robinson(here::here("output/maps/environment/OISST/OISST_daily_1981-2021_mean.csv"))
+
+
+mean_map <- map_plot(mean_df)
+
+mean_map + 
+    scale_fill_distiller(palette = "Spectral", name = "SST (°C)") 
+```
+
+
+# Desviación Estandar
+
+```{r sd, eval = TRUE}
+#open
+
+sd_df <- convert_df_to_robinson(here::here("output/maps/environment/OISST/OISST_daily_1981-2021_sd.csv"))
+
+
+sd_map <- map_plot(sd_df)
+
+sd_map + 
+    scale_fill_distiller(palette = "Spectral", name = "SST SD (°C)") 
+```
+
+
+
+# Amplitud
+
+Definido como el valor máximo menos el valor mínimo de la series historica
+
+```{r range, eval = TRUE}
+#open
+
+range_df <- convert_df_to_robinson(here::here("output/maps/environment/OISST/OISST_daily_1981-2021_range.csv"))
+
+
+range_map <- map_plot(range_df)
+
+range_map + 
+    scale_fill_viridis_c(name = "SST range (°C)", option = "plasma")
+```
+
+
+
+
+
+# Curtosis
+
+::: callout-note
+
+## Sobre curtosis
+
+La curtosis es una estadística que determina el grado de concentración de los valores de una variable en torno al centro de la distribución de frecuencias.
+
+**Una distribución normal tiene un valor de curtosis de 3**
+
+```{r, eval=TRUE, include=TRUE, fig.height=4, fig.width=6}
+
+set.seed(123)
+
+mesokurtic <- rnorm(1000, sd = 2)
+mesokurtic_kurt <- round(moments::kurtosis(mesokurtic), 2)
+
+
+leptokurtic <- c(rep(61, each = 2), rep(64, each = 5),
+rep(65, each = 57), rep(67, each = 12), rep(70, each = 10))
+leptokurtic_kur <- round(moments::kurtosis(leptokurtic), 2)
+
+platikurtic <- c(rep(61, each = 10), rep(64, each = 18),
+rep(65, each = 16), rep(67, each = 27), rep(70, each = 16),
+rep(73, each = 17))
+
+platikurtic_kur <- round(moments::kurtosis(platikurtic), 2)
+
+
+
+par(mfrow = c(1,3), mar = c(4,0,4,0), oma = c(4,0,4,0))
+
+hist(mesokurtic, breaks = 10, prob = TRUE, col = "lightblue",
+     main = paste0("curtosis=", mesokurtic_kurt), yaxt="n",ylab="")
+
+lines(density(mesokurtic), lwd = 4, col = "darkred")
+
+hist(leptokurtic, breaks = 10, prob = TRUE, col = "lightblue",
+     main=paste0("curtosis= ", leptokurtic_kur), yaxt="n", ylab="")
+lines(density(leptokurtic), lwd = 4, col = "darkred")
+
+hist(platikurtic, breaks = 10, prob = TRUE, col = "lightblue",
+     main = paste0("curtosis= ", platikurtic_kur), yaxt="n", ylab="")
+lines(density(platikurtic), lwd = 4, col = "darkred")
+dev.off()
+
+```
+:::
+
+
+
+```{r kurtosis, eval = TRUE, include=TRUE}
+#open
+
+kurtosis_df <- convert_df_to_robinson(here::here("output/maps/environment/OISST/OISST_daily_1981-2021_kurtosis.csv"))
+
+
+kurtosis_map <- map_plot(kurtosis_df)
+
+kurtosis_map + 
+    scale_fill_viridis_c(name = "Kurtosis", option = "plasma", 
+                         limits = c(0, 6), breaks = c(0, 2, 4, 6))
+```
+
+
+# Asimetria (Skewness)
+
+
+```{r, eval = TRUE, include=TRUE}
+#open
+skewness_df <- convert_df_to_robinson(here::here("output/maps/environment/OISST/OISST_daily_1981-2021_skewness.csv"))
+
+
+skewness_map <- map_plot(skewness_df)
+
+skewness_map + 
+    scale_fill_viridis_c(name = "Skewness", option = "plasma") 
+```
+
+
+
+
+
+
+# Bimodalidad
+
+
+
+::: callout-note
+
+## Sobre la prueba de Hartigan
+
+La prueba de Hartigan (Hartigan´s DIP test) se puede definir como: "_The dip test measures multimodality in a sample by the maximum difference, over all sample points, between the empirical distribution function, and the unimodal distribution function that minimizes that maximum difference_"
+
+La prueba resulta en un valor estadístico (DIP value) y un valor de significancía. De acuerdo al autor de la prueba, un valor de significancia menor a 0.05 indica una bimodalidad significativa, valores mayores de 0.05 pero menores de 0.10 sugieren una bimodalidad con significancia marginal. 
+
+**un valor P cercano a 0 indican que la serie de tiempo es AL MENOS bimodal**
+
+:::
+
+
+
+```{r, eval = TRUE, include=TRUE}
+#open
+
+dip_df <- convert_df_to_robinson(here::here("output/maps/environment/OISST/OISST_daily_1981-2021_dip.csv"))
+
+
+dip_map <- map_plot(dip_df)
+
+dip_map + 
+    scale_fill_viridis_c(name = "DIP´s P value", option = "plasma", limits = c(0,1))  
+```
+
+
+
+
+
+# Descripcion de series de tiempo como ejemplo
+
+## ubicación de los puntos
+
+```{r points_selection}
+#### Puntos de interes para extraer las series de tiempo
+
+lons <- c(-111.23, -42.25, 34.68, 20.80, -62.09, 18.399, -122.049, 120.180)
+lats <- c(11.33, 44.91, -27.005, 59.47, 30.37, 35.14, -46.94, -35.05)
+
+# Convertir las longituded a 0 - 360 para usarlos sobr eel raster original 
+lons_convert <- ifelse(lons < 0, 360 + lons, lons)
+
+# tabla con las cooridenadas para grafica mapa
+coords_map <- data.frame(lons, lons_convert, lats, points = seq(1,8,1))
+```
+
+
+```{r, eval = FALSE, include = FALSE, echo= FALSE}
+# Extraction of time series from points
+# RUN ONLY ONCE
+
+nc_file <- "databases/environment/OISST/oisst_daily_1981-2021.nc"
+
+
+# import multi-band NetCDF file
+sst_multi <- brick(nc_file)
+
+# print a summary of the brick
+sst_multi
+
+# extraer los puntos de interes del raster
+# extraer una serie de tiempo del nc original para probar si es cierto
+
+points <- SpatialPoints(cbind(lons_convert, lats))
+points <- raster::extract(x = sst_multi, y = points, df = TRUE)
+
+
+point1 <- as.numeric(points[1, -1])
+point2 <- as.numeric(points[2, -1])
+point3 <- as.numeric(points[3, -1])
+point4 <- as.numeric(points[4, -1])
+point5 <- as.numeric(points[5, -1])
+point6 <- as.numeric(points[6, -1])
+point7 <- as.numeric(points[7, -1])
+point8 <- as.numeric(points[8, -1])
+
+all_points_df <- data.frame(point1, point2, point3, point4, point5, point6, point7, point8)
+
+# save points ts as df 
+write.table(all_points_df, file = here::here("output/tables/ts_points.csv"), row.names = FALSE, quote = FALSE)
+
+```
+
+
+
+
+```{r map_poits}
+
+points_map <- ggplot()+
+  # add countries layers
+  geom_sf(fill=grey(0.9), color=grey(0.6), lwd = 0.2, data=countries) +
+  
+  # Add points
+  geom_point(data = coords_map,
+             aes(x = lons, y = lats,), size = 3)+
+  geom_text(data = coords_map, 
+            aes(x = lons, y = lats, label = points), size = 5.5, nudge_x = 5.5)+
+  # theme
+  theme_minimal()+
+  theme(axis.title = element_blank())
+
+print(points_map)
+```
+
+
+
+```{r eval_points}
+
+# read points csv
+points_df <- read.table(here::here("output/tables/ts_points.csv"), header = TRUE)
+
+all_points_list <- list(points_df$point1, points_df$point2, points_df$point3, points_df$point4,
+                        points_df$point5, points_df$point6, points_df$point7, points_df$point8)
+
+# plot time series
+
+plot_ts_points <- ggplot(data = points_df |> 
+  mutate(time = seq(1:nrow(points_df))) |> 
+  pivot_longer(-time, names_to = "point", values_to = "sst"), 
+  aes(x = time, y = sst, col = point))+
+  geom_line()+
+  facet_wrap(~point, ncol = 2)
+
+print(plot_ts_points)
+
+```
+
+
+## histogramas de frecuencia
+
+```{r}
+#| column: screen-inset-shaded
+#| layout-ncol: 2
+
+
+
+for (i in 1:8) {
+  mean_val <- mean(all_points_list[[i]])
+  sd_val <- sd(all_points_list[[i]])
+  kurtosis <- moments::kurtosis(all_points_list[[i]])
+  skewness <- moments::skewness(all_points_list[[i]])
+  dip_test <- dip.test(all_points_list[[i]])
+  dip_pval <- dip_test$p.value[[1]]
+  dip_stat <- dip_test$statistic[[1]]
+  
+  # plot
+  hist_plot <- ggplot(data.frame(all_points_list[[i]]), aes(x = all_points_list..i..)) + 
+  geom_histogram(aes(y = ..density..),
+                 colour = 1, fill = "grey95") +
+  geom_density()+
+  geom_vline(xintercept = c(mean_val - sd_val, mean_val, mean_val + sd_val),
+             col = "red", linetype = c("dashed", "solid", "dashed")) +
+   annotate("text", label = paste0("Kurtosis= ", round(kurtosis, 3)), 
+            x = min(all_points_list[[i]]) + 1 , y = 0.55)+
+   annotate("text", label = paste0("Skewness= ", round(skewness, 3)), 
+            x = min(all_points_list[[i]]) + 1, y = 0.50)+
+   annotate("text", label = paste0("DIP Pval= ", round(dip_pval, 4)), 
+            x = min(all_points_list[[i]]) + 1 , y = 0.45)+
+       annotate("text", label = paste0("DIPval= ", round(dip_stat, 4)), 
+            x = min(all_points_list[[i]]) + 1 , y = 0.40)+
+  annotate("text", label = paste0("mean = ", round(mean_val, 4)), 
+            x = mean_val, y = 0.55, col = "red")+
+      annotate("text", label = "-SD", 
+            x = mean_val - sd_val, y = 0.55, col = "red")+
+          annotate("text", label = "+SD", 
+            x = mean_val + sd_val, y = 0.55, col = "red")+
+    theme_minimal()+
+  labs(title = paste0("Point ", i), x = "Temperature", y = "density")
+  
+  print(hist_plot)
+}
+
+
+```
